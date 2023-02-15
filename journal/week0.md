@@ -5,3 +5,9 @@
 
 **Preview**
 ![My Napkin](/images/napkin-design.png)
+
+### Learning Point
+Types of Arthitecture Design
+- Conceptual Design
+- Logical Design
+- Physical Design
