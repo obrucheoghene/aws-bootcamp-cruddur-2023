@@ -7,7 +7,11 @@
 ![My Napkin](/images/napkin-design.png)
 
 ### Learning Point
+
 Types of Architecture Design
 - Conceptual Design
 - Logical Design
-- Physical Design1
+- Physical Design
+
+**Difference**
+A conceptual Design is the highest level, and therefore the least detailed. A logical Design involves more detailed thinking about the implementation without actually implementing anything. Finally, the physical Design draws on the requirements from the logical Design to create a real database.
