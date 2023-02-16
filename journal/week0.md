@@ -15,3 +15,5 @@ Types of Architecture Design
 
 **Difference**
 A conceptual Design is the highest level, and therefore the least detailed. A logical Design involves more detailed thinking about the implementation without actually implementing anything. Finally, the physical Design draws on the requirements from the logical Design to create a real database.
+
+- Added MFA Multifactor Authentication to my aws root user
