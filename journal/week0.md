@@ -32,6 +32,10 @@ I ran commands on the Cloudshell to examine their output. Some these commands ar
 ![CloudShell Use Preview](./assets/cloudshell-use.png)
 
 ### 5. Installed AWS CLI
+I installed AWS CLI manually on my gitpod after which I added the installation script to my gitpod config file to automatically install every time I start a gitpod instance.
+
+![AWS CLI Installation Preview](./assets/aws-cli-installation.png)
+
 
 ### 6. Create a Billing Alarm
 
