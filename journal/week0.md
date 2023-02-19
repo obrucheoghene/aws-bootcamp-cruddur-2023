@@ -32,12 +32,35 @@ I ran commands on the Cloudshell to examine their output. Some these commands ar
 ![CloudShell Use Preview](./assets/cloudshell-use.png)
 
 ### 5. Installed AWS CLI
-I installed AWS CLI manually on my gitpod after which I added the installation script to my gitpod config file to automatically install every time I start a gitpod instance.
+I installed AWS CLI manually on my gitpod after which I added the installation script to my gitpod config file to automatically install it every time I start a new gitpod instance.
+
+Here is the installation command for Linus machines 
+~~~
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+~~~
+
+I updated my `gitpod.yml` file with the script below to automate the installation
+
+```yaml
+tasks:
+  - name: aws-cli
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+    init: |
+      cd /workspace
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      cd $THEIA_WORKSPACE_ROOT
+```
 
 ![AWS CLI Installation Preview](./assets/aws-cli-installation.png)
 
 
 ### 6. Create a Billing Alarm
+
 
 ### 7. Create a Budget
 
