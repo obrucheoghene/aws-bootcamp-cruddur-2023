@@ -38,11 +38,11 @@ Then I configured my aws credentials using to methods
 
 ![AWS configure Credentials](./assets/aws-configure.png)
 
-3. set env var using `export` 
+2. set env var using `export` 
 
 ![Set AWS credentials in ENV](./assets/aws-export.png)
 
-### 5. Installed AWS CLI
+### 6. Installed AWS CLI
 I installed AWS CLI manually on my gitpod after which I added the installation script to my gitpod config file to automatically install it every time I start a new gitpod instance.
 
 Here is the installation command for Linus machines 
@@ -70,10 +70,10 @@ tasks:
 ![AWS CLI Installation Preview](./assets/aws-cli-installation.png)
 
 
-### 6. Create a Billing Alarm
+### 7. Create a Billing Alarm
 
 
-### 7. Create a Budget
+### 8. Create a Budget
 
 
 ### How it started
