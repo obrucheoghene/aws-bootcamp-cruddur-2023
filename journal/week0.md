@@ -12,6 +12,8 @@ Preview below
 
 ### 2. Recreate Logical Architectual Diagram in Lucid Charts 
 [Logical Architectual Diagram](https://lucid.app/lucidchart/0e44d5f7-6068-4d37-ab77-d643906a6641/edit?viewport_loc=-34%2C40%2C1768%2C935%2C0_0&invitationId=inv_1c2e83f5-d8ad-449e-95e5-4ead14b8e3bc)
+Preview below
+![Conceptual Diagram Preview](./assets/logical-diagram.png)
 
 ### How it started
 
