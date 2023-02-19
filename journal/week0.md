@@ -3,11 +3,12 @@
 
 ## Required Homework
 
-### Recreate Conceptual Diagram
+### 1. Recreate Conceptual Diagram
 I created my conceptual diagram on lucid chart. It was my first time to use lucid chart so I watched a tutorial on youtube which helped me to use it properly.
 
 [Conceptual Diagram In Lucid Chart](https://lucid.app/lucidchart/7c9fc557-36ba-4416-bc4d-3b3d8e60a7f1/edit?viewport_loc=-37%2C66%2C1579%2C841%2C0_0&invitationId=inv_091fdb93-da76-450d-9e0b-62cd910dd308)
-
+Preview below
+![Conceptual Diagram Preview](./assets/Conceptual-Diagram.png)
 
 ### How it started
 
