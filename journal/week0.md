@@ -22,7 +22,12 @@ I added `MFA` to the admin user for extra security layer to the user.
 ![Conceptual Diagram Preview](./assets/admin-user.png)
 
 ### 4. Use CloudShell
-
+The AWS CloudShell is a web based and pre-authenticated shell for utilizing AWS resources via the command line.
+I ran commands on the Cloudshell to examine their output. Some these commands are: 
+- `aws`
+- `aws help`
+- `aws sts get-caller-identity`
+- `aws account get-contact-information`
 ### 5. Installed AWS CLI
 
 ### 6. Create a Billing Alarm
