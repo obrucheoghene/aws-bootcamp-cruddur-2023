@@ -71,10 +71,14 @@ tasks:
 
 
 ### 7. Create a Billing Alarm
+I created a billing alarm via the AWS managment console and AWS CLI. After which I deleted one since they do exactly the same thing.
 
+![Billing Alarm](./assets/aws-billing-alarm.png)
 
 ### 8. Create a Budget
+I also created  budget via the AWS managment console and AWS CLI. After which I delete to prevent unexpected charges since the maximum of budget to have on the aws free tier account is two.
 
+![Budget](./assets/aws-budget.png)
 
 ### How it started
 
