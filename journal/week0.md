@@ -28,6 +28,9 @@ I ran commands on the Cloudshell to examine their output. Some these commands ar
 - `aws help`
 - `aws sts get-caller-identity`
 - `aws account get-contact-information`
+
+![CloudShell Use Preview](./assets/cloudshell-use.png)
+
 ### 5. Installed AWS CLI
 
 ### 6. Create a Billing Alarm
