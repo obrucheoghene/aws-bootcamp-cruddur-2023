@@ -21,6 +21,15 @@ With the user group I can easily manage all users with administrative permission
 I added `MFA` to the admin user for extra security layer to the user.
 ![Conceptual Diagram Preview](./assets/admin-user.png)
 
+### 4. Use CloudShell
+
+### 5. Installed AWS CLI
+
+### 6. Create a Billing Alarm
+
+### 7. Create a Budget
+
+
 ### How it started
 
 I started out following the videos by Shala Warner (@giftedLane) to create free accounts on tools and 
