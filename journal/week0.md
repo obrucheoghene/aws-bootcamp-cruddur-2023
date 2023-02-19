@@ -92,7 +92,7 @@ I also created  budget via the AWS managment console and AWS CLI. After which I 
 
 ### 4. Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts
 
-### 5. Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. 
+### 5. Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility.
 
 ### 6. Open a support ticket and request a service limit
 
