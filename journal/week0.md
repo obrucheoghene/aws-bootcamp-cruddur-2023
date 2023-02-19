@@ -31,6 +31,17 @@ I ran commands on the Cloudshell to examine their output. Some these commands ar
 
 ![CloudShell Use Preview](./assets/cloudshell-use.png)
 
+### 5. Generate AWS Credentials
+I created access key and secret for my admin user to provide programmatic access to my aws resources.
+Then I configured my aws credentials using to methods
+1. used `aws configure`
+
+![AWS configure Credentials](./assets/aws-configure.png)
+
+3. set env var using `export` 
+
+![Set AWS credentials in ENV](./assets/aws-export.png)
+
 ### 5. Installed AWS CLI
 I installed AWS CLI manually on my gitpod after which I added the installation script to my gitpod config file to automatically install it every time I start a new gitpod instance.
 
