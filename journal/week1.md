@@ -43,6 +43,11 @@ Preview container environment variable
 
 Preview port container is running on
  ![Backend-Flask Container port](./assets/backend-running-port.png)
+ 
+ d. I appended `/api/activities/home` to the address url showing in the above port preview and opened it on the browser.
+ Here was the the response I received.
+  ![Backend-Flask Api Response](./assets/backend-running-response.png)
+
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
