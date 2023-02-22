@@ -124,6 +124,11 @@ networks:
     driver: bridge
     name: cruddur
 ```
+After which I started both container with the command below
+
+```sh
+docker compose up
+```
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
