@@ -77,6 +77,18 @@ c. To build `frontend-react-js` docker image, I navigated to the app root direct
  docker build -t frontend-react-js ./frontend-react-js
  ```
 
+d. I started the `frontend-react-js` container on port `3000` with the command below
+
+```sh
+docker run -p 3000:3000 -d frontend-react-js
+```
+
+Preview of port where the `frontend-react-js` container is running on
+ ![frontend-react-js Container port](./assets/frontend-backend-port.png)
+ 
+ d. I opened the address url running on port 3000 on the browser to preview the application frontend.
+   ![frontend-react-js Preview ](./assets/frontend-react-js-preview.png)
+
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
 ### 3. Write a Flask Backend Endpoint for Notifications
