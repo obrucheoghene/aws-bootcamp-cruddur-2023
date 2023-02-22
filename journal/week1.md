@@ -86,8 +86,13 @@ docker run -p 3000:3000 -d frontend-react-js
 Preview of port where the `frontend-react-js` container is running on
  ![frontend-react-js Container port](./assets/frontend-backend-port.png)
  
+ 
  d. I opened the address url running on port 3000 on the browser to preview the application frontend.
+ 
    ![frontend-react-js Preview ](./assets/frontend-react-js-preview.png)
+
+As you could have noticed in the above preview, the `frontend-react-js` has no data from the `backend-flask` This is because both of the containers are not connected yet to communicate with each other.
+
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
