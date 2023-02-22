@@ -36,7 +36,13 @@ c. After which I ran the container with the command below
 ```sh
 docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
 ```
-This command started the container and set environment variable for `FRONTEND_URL` and `BACKEND_URL` to `*`
+This command started the container on port `4567` and set environment variable for `FRONTEND_URL` and `BACKEND_URL` to `*`
+
+Preview container environment variable
+ ![Backend-Flask Container ENV](./assets/backend-image-env-set.png)
+
+Preview port container is running on
+ ![Backend-Flask Container port](./assets/backend-running-port.png)
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
