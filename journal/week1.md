@@ -28,14 +28,15 @@ b. I ran the command below to build backend-flask docker image
  ```sh
  docker build -t  backend-flask ./backend-flask
  ```
- 
+ Here is the result showing that a `backend-flask` image has been created
+ ![Backend-Flask Docker Image Build](./assets/backend-img-build.png)
  
 c. After which I ran the container with the command below
 
 ```sh
 docker run --rm -p 4567:4567 -it -e FRONTEND_URL='*' -e BACKEND_URL='*' backend-flask
 ```
-The command above started the container and set environment variable for `FRONTEND_URL` and `BACKEND_URL`
+This command started the container and set environment variable for `FRONTEND_URL` and `BACKEND_URL` to `*`
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
