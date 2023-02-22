@@ -24,7 +24,7 @@ ENV FLASK_ENV=development
 EXPOSE ${PORT}
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0", "--port=4567"]
 ```
-b. I ran the command below to build backend-flask docker image 
+b. I ran the command below to build `backend-flask` docker image 
  ```sh
  docker build -t  backend-flask ./backend-flask
  ```
@@ -48,6 +48,34 @@ Preview port container is running on
  Here was the the response I received.
   ![Backend-Flask Api Response](./assets/backend-running-response.png)
 
+
+### Steps I followed to containerize Frontend-React-js
+
+a. I installed the npm packages by running the commands below
+```sh
+cd frontend-react-js
+npm i
+```
+
+b. I created a `Dockerfile` in `frontend-react-js` directory
+
+```dockerfile
+FROM node:16.18
+
+ENV PORT=3000
+
+COPY . /frontend-react-js
+WORKDIR /frontend-react-js
+RUN npm install
+EXPOSE ${PORT}
+CMD ["npm", "start"]
+```
+
+c. To build `frontend-react-js` docker image, I navigated to the app root directory using `cd ..` then I ran the command below
+
+ ```sh
+ docker build -t frontend-react-js ./frontend-react-js
+ ```
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
