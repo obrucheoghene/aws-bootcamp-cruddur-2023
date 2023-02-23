@@ -94,7 +94,7 @@ Preview of port where the `frontend-react-js` container is running on
 As you could have noticed in the above preview, the `frontend-react-js` has no data from the `backend-flask` This is because both of the containers are not connected yet to communicate with each other.
 
 ### Using Docker Compose to Manage Multiple container
-Inorder to spin up the `frontend-react-js` and `backend-flask` together, I created a `docker-compose.yml` file as shown below
+Inorder to spin up the containers for `frontend-react-js` and `backend-flask` images at once, I created a `docker-compose.yml` file with content as shown below
 
 ```yml
 version: "3.8"
@@ -124,7 +124,7 @@ networks:
     driver: bridge
     name: cruddur
 ```
-After which I started both container with the command below
+On the root directory of the project I executed the command below
 
 ```sh
 docker compose up
