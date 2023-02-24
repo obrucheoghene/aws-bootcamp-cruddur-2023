@@ -302,6 +302,7 @@ Preview of DynamoDB local running
   ![DynamoDB local](./assets/dynamodb-createtable.png)
 
    - Created an Item
+
     ```sh
     aws dynamodb put-item \
     --endpoint-url http://localhost:8000 \
@@ -312,6 +313,13 @@ Preview of DynamoDB local running
     ```
 
     ![DynamoDB local](./assets/dynamodb-createitem.png)
+
+    - List Tables
+
+    ```sh
+    aws dynamodb list-tables --endpoint-url http://localhost:8000
+    ```
+    ![DynamoDB List Tables](./assets/dynamodb-listtables.png)
 
 
 ### 6. Run Postgres Container and ensure it works
