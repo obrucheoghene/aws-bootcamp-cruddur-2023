@@ -321,5 +321,11 @@ Preview of DynamoDB local running
     ```
     ![DynamoDB List Tables](./assets/dynamodb-listtables.png)
 
+    - Get records
+
+    ```sh
+    aws dynamodb scan --table-name Music --query "Items" --endpoint-url http://localhost:8000
+    ```
+    ![DynamoDB Get Records](./assets/dynamodb-scantable.png)
 
 ### 6. Run Postgres Container and ensure it works
