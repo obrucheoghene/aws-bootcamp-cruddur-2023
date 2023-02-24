@@ -124,6 +124,13 @@ networks:
     driver: bridge
     name: cruddur
 ```
+
+I installed the npm packages required by the `frontend-react-js`
+```sh
+cd frontend-react-js
+npm i
+```
+
 On the root directory of the project I executed the command below
 
 ```sh
