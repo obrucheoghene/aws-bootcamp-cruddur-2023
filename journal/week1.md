@@ -173,6 +173,13 @@ Here is the preview of the application on the browser
 
 ### 3. Write a Flask Backend Endpoint for Notifications
 
+Here is the preview of my Flask Backend Endpoint Notifications
+ ![Flask Backend Endpoint Notifications](./assets/notification-endpoint-implementation.png)
+
+
+
+
+
 ### 4. 	Write a React Page for Notifications
 
 ### 5. 	Run DynamoDB Local Container and ensure it works
