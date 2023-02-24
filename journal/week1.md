@@ -165,6 +165,11 @@ Here is the preview of the application on the browser
                 items:
                   $ref: '#/components/schemas/Activity'
   ```
+  
+  Preview of the Notification endpoint on swagger editor
+
+   ![Notification endpoint on swagger editor](./assets/open-api-notification-spec.png)
+
 
 ### 3. Write a Flask Backend Endpoint for Notifications
 
