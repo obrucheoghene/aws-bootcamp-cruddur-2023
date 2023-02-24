@@ -251,6 +251,12 @@ import NotificationsFeedPage from './pages/NotificationsFeedPage';
   }
 ```
 
+- On the Cruddur app opened in browser I clicked on `Notifications` on the sidebar to open the `NotificationsFeedPage`
+
+Here is the preview
+
+ ![NotificationsFeedPage](./assets/notification-feed-page.png)
+
 
 ### 5. 	Run DynamoDB Local Container and ensure it works
 
