@@ -208,6 +208,16 @@ class NotificationsActivities:
 ```py
 from services.notifications_activities import *
 ```
+
+-- Finally I created the notifications endpoint route
+
+```py
+@app.route("/api/activities/notifications", methods=['GET'])
+def data_notifications():
+  data = NotificationsActivities.run()
+  return data, 200
+```
+
 Here is the preview of my Flask Backend Endpoint Notifications
 
  ![Flask Backend Endpoint Notifications](./assets/notification-endpoint-implementation.png)
