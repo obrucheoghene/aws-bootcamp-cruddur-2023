@@ -166,7 +166,7 @@ Here is the preview of the application on the browser
                   $ref: '#/components/schemas/Activity'
   ```
   
-  Preview of the Notification endpoint on swagger editor
+  Preview of the Notifications endpoint on swagger editor
 
    ![Notification endpoint on swagger editor](./assets/open-api-notification-spec.png)
 
