@@ -299,10 +299,19 @@ Preview of DynamoDB local running
     --table-class STANDARD
   ```
 
-Here is result after running the command above
+  ![DynamoDB local](./assets/dynamodb-createtable.png)
 
-![DynamoDB local](./assets/dynamodb-createtable.png)
+   - Created an Item
+    ```sh
+    aws dynamodb put-item \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --item \
+        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}}' \
+    --return-consumed-capacity TOTAL  
+    ```
 
+    ![DynamoDB local](./assets/dynamodb-createitem.png)
 
 
 ### 6. Run Postgres Container and ensure it works
