@@ -231,6 +231,10 @@ Here is the preview of my Flask Backend Endpoint Notifications
 
 ### 4. 	Write a React Page for Notifications
 
+- I created  `NotificationsFeedPage.js` and `NotificationsFeedPage.css`
+
+ ![NotificationsFeedPage](./assets/notificationfeedpage.png)
+
 
 ### 5. 	Run DynamoDB Local Container and ensure it works
 
