@@ -124,11 +124,24 @@ networks:
     driver: bridge
     name: cruddur
 ```
+
+I installed the npm packages required by the `frontend-react-js`
+```sh
+cd frontend-react-js
+npm i
+```
+
 On the root directory of the project I executed the command below
 
 ```sh
 docker compose up
 ```
+Here is the preview of `frontend-react-js` and `backend-flask` containers running on port `3000` and `4567` respectively
+
+ ![frontend-react-js and Backend-flask Containers running](./assets/docker-compose-images-running.png)
+
+Here is the preview of the application on the browser
+ ![Application opened in the browser](./assets/cruddle-app-docker-compose.png)
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
