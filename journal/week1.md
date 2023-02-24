@@ -283,5 +283,26 @@ services:
 Preview of DynamoDB local running
 ![DynamoDB local](./assets/dynamodb-container.png)
 
+- Using in commands listed in [100DaysofCloudChallenge](https://github.com/100DaysOfCloud/challenge-dynamodb-local)
+
+  - Created a `Music` table
+
+  ```sh
+  aws dynamodb create-table \
+    --endpoint-url http://localhost:8000 \
+    --table-name Music \
+    --attribute-definitions \
+        AttributeName=Artist,AttributeType=S \
+        AttributeName=SongTitle,AttributeType=S \
+    --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --table-class STANDARD
+  ```
+
+Here is result after running the command above
+
+![DynamoDB local](./assets/dynamodb-createtable.png)
+
+
 
 ### 6. Run Postgres Container and ensure it works
