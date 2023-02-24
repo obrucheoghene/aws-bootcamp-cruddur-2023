@@ -140,6 +140,8 @@ Here is the preview of `frontend-react-js` and `backend-flask` containers runnin
 
  ![frontend-react-js and Backend-flask Containers running](./assets/docker-compose-images-running.png)
 
+Here is the preview of the application on the browser
+ ![Application opened in the browser](./assets/cruddle-app-docker-compose.png)
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
