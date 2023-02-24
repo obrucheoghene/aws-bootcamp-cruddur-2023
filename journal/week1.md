@@ -136,6 +136,10 @@ On the root directory of the project I executed the command below
 ```sh
 docker compose up
 ```
+Here is the preview of `frontend-react-js` and `backend-flask` containers running on port `3000` and `4567` respectively
+
+ ![frontend-react-js and Backend-flask Containers running](./assets/docker-compose-images-running.png)
+
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
