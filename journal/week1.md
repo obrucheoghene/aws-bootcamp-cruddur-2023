@@ -260,4 +260,24 @@ Here is the preview
 
 ### 5. 	Run DynamoDB Local Container and ensure it works
 
+- I integrated the DynamoDB Local image config into our existing `docker-compose.yml` file
+
+```yml
+services:
+  dynamodb-local:
+    # https://stackoverflow.com/questions/67533058/persist-local-dynamodb-data-in-volumes-lack-permission-unable-to-open-databa
+    # We needed to add user:root to get this working.
+    user: root
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./docker/dynamodb:/home/dynamodblocal/data"
+    working_dir: /home/dynamodblocal
+```
+
+- I ran `docker compose up` to run the container
+
 ### 6. Run Postgres Container and ensure it works
