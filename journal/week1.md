@@ -283,4 +283,5 @@ services:
 Preview of DynamoDB local running
 ![DynamoDB local](./assets/dynamodb-container.png)
 
+
 ### 6. Run Postgres Container and ensure it works
