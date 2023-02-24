@@ -278,6 +278,9 @@ services:
     working_dir: /home/dynamodblocal
 ```
 
-- I ran `docker compose up` to run the container
+- I ran `docker-compose up` to run the container
+
+Preview of DynamoDB local running
+![DynamoDB local](./assets/dynamodb-container.png)
 
 ### 6. Run Postgres Container and ensure it works
