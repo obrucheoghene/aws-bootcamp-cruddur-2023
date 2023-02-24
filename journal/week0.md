@@ -90,6 +90,8 @@ I also created  budget via the AWS managment console and AWS CLI. After which I 
 - I set up MFA on my root account and Admin user account to add an extra security layer during login.
 - I created an IAM role for which I name `S3_Lambda` which will allows Lambda functions to call AWS services on your behalf.
 
+![S3 Lambda role](./assets/s3-lambda_role.png)
+
 ### 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue
 
 ### 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
