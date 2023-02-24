@@ -145,6 +145,27 @@ Here is the preview of the application on the browser
 
 
 ### 2. Document the Notification Endpoint for the OpenAI Document 
+
+  Here is my documentation of the notification endpoint in the `openapi-3.0.yml` file
+  
+  ```yml
+    /api/activities/notifications:
+    get:
+      description: Return of activities for all of those that I follow
+      tags:
+        - activities
+      parameters: []
+      responses:
+        '200':
+          description: Return array of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+  ```
+
 ### 3. Write a Flask Backend Endpoint for Notifications
 
 ### 4. 	Write a React Page for Notifications
