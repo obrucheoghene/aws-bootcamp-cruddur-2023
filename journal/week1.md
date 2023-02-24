@@ -174,8 +174,14 @@ Here is the preview of the application on the browser
 ### 3. Write a Flask Backend Endpoint for Notifications
 
 Here is the preview of my Flask Backend Endpoint Notifications
+
  ![Flask Backend Endpoint Notifications](./assets/notification-endpoint-implementation.png)
 
+ On my browser, I appended `/api/activities/notifications` to the application URL to recieve the json response on the Notifications api.
+
+ Here is the preview of the response
+
+ ![ Notifications Api Response](./assets/notification-api-response.png)
 
 
 
