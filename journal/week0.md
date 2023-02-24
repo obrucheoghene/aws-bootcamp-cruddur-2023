@@ -93,8 +93,15 @@ I also created  budget via the AWS managment console and AWS CLI. After which I 
 ![S3 Lambda role](./assets/s3-lambda_role.png)
 
 ### 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue
+
 - I started by creating an SNS topic `health-issue`
-- Then I followed the guide in this AWS tutorial to create create the EventBridge Rule to hookup Health Dashboard.
+
+![SNS Topic](./assets/sns-topic.png)
+
+- Then I followed the guide in this [AWS tutorial](https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html) to create create the EventBridge Rule to hookup Health Dashboard.
+
+![SNS Topic](./assets/sns-topic.png)
+
 
 ### 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 
