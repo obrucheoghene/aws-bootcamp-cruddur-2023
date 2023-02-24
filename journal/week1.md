@@ -209,7 +209,7 @@ class NotificationsActivities:
 from services.notifications_activities import *
 ```
 
--- Finally I created the notifications endpoint route
+- Finally I created the notifications endpoint route
 
 ```py
 @app.route("/api/activities/notifications", methods=['GET'])
