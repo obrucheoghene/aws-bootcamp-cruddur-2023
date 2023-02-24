@@ -236,6 +236,14 @@ Here is the preview of my Flask Backend Endpoint Notifications
  ![NotificationsFeedPage](./assets/notificationfeedpage.png)
 
 
+- Imported the `NotificationsFeedPage.js` in the `App.js`
+
+```js
+import NotificationsFeedPage from './pages/NotificationsFeedPage';
+```
+
+
+
 ### 5. 	Run DynamoDB Local Container and ensure it works
 
 ### 6. Run Postgres Container and ensure it works
