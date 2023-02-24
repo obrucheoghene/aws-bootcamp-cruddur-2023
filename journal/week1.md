@@ -203,6 +203,11 @@ class NotificationsActivities:
     ]
     return results
 ```
+- On `app.py` I imported the `notifications_activities.py`
+
+```py
+from services.notifications_activities import *
+```
 Here is the preview of my Flask Backend Endpoint Notifications
 
  ![Flask Backend Endpoint Notifications](./assets/notification-endpoint-implementation.png)
