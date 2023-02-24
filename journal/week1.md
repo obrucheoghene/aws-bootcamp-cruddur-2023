@@ -329,3 +329,18 @@ Preview of DynamoDB local running
     ![DynamoDB Get Records](./assets/dynamodb-scantable.png)
 
 ### 6. Run Postgres Container and ensure it works
+
+- I integrated `postgres` client into `gitpod.yml`
+```yml
+  - name: postgres
+    init: |
+      curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc|sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+      echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" |sudo tee  /etc/apt/sources.list.d/pgdg.list
+      sudo apt update
+      sudo apt install -y postgresql-client-13 libpq-dev
+```
+
+- I installed the postgres client
+- I added postgres extension to `gitpod.yml` extensions
+- I connected to postgres database with the extension
+- I also connected to the progress database and listed the default database
