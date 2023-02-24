@@ -299,7 +299,7 @@ Preview of DynamoDB local running
     --table-class STANDARD
   ```
 
-  ![DynamoDB local](./assets/dynamodb-createtable.png)
+  ![DynamoDB Create table](./assets/dynamodb-createtable.png)
 
    - Created an Item
 
@@ -312,7 +312,7 @@ Preview of DynamoDB local running
     --return-consumed-capacity TOTAL  
     ```
 
-    ![DynamoDB local](./assets/dynamodb-createitem.png)
+    ![DynamoDB Create Item](./assets/dynamodb-createitem.png)
 
     - List Tables
 
