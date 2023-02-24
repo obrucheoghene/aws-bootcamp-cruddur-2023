@@ -344,3 +344,5 @@ Preview of DynamoDB local running
 - I added postgres extension to `gitpod.yml` extensions
 - I connected to postgres database with the extension
 - I also connected to the progress database and listed the default database
+  
+  ![Postgres DB connection](./assets/postgres-connection.png)
