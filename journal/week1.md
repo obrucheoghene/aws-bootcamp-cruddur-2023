@@ -242,6 +242,14 @@ Here is the preview of my Flask Backend Endpoint Notifications
 import NotificationsFeedPage from './pages/NotificationsFeedPage';
 ```
 
+- Created the route for the `NotificationsFeedPage`
+
+```js
+  {
+    path: "/notifications",
+    element: <NotificationsFeedPage />
+  }
+```
 
 
 ### 5. 	Run DynamoDB Local Container and ensure it works
