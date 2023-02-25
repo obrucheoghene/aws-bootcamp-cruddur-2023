@@ -351,18 +351,24 @@ Preview of DynamoDB local running
 ## Homework Challenges    
 ### 1. Run the dockerfile CMD as an external script
 ### 2. Push and tag a image to DockerHub (they have a free tier)
-- Created a dockerhub account and login
-- Run `docker images`
+- I created a dockerhub account and login
+- I Ran `docker images` to see all my available images
 - Login to docker hub via the CLI `docker login`
-- It will prompt for `username` and `password` 
-- Tag your docker image 
+- This prompted me to enter my `username` and `password` 
+- Then I created and tagged the docker image to push to dockerhub
 ```sh
-docker tag dockername:version tagname/dockername
+docker tag aws-bootcamp-cruddur-2023-frontend-react-js:latest wilfredcloud/cruddur-backend-flask
 ```
-- Push image
+- Finally I pushed the image
+```sh
+docker push wilfredcloud/cruddur-backend-flask
 ```
-docker push dockername
-```
+Preview CLI command
+![CLI command Dockerhub](./assets/docker-cli.png)
+
+Preview Image in Dockerhub
+![Dockerhub](./assets/dockerhub-image.png)
+
 ### 3. Use multi-stage building for a Dockerfile build
 ### 4. Implement a healthcheck in the V3 Docker compose file
 ### 5. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
