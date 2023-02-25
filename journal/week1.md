@@ -378,10 +378,11 @@ I followed this [install guide](https://docs.docker.com/desktop/install/mac-inst
 
 1. I downloaded the Docker Desktop for Mac on [Docker website](https://docs.docker.com/desktop/install/mac-install)
 2. I double-clicked `Docker.dmg` to open the installer, then drag the Docker icon to the Applications folder.
+
+ ![Docker Desktop Installation](./assets/docker-installation.png)
+
 3. I double-clicked on `Docker.app` in the Applications folder to start Docker.
 4. Finally I accepted the `Docker Subscription Service Agreement`
-
-
 
 
 ### 7. Launch an EC2 instance that has docker installed, and pull a container to demonstrate you can run your own docker processes. 
