@@ -351,6 +351,18 @@ Preview of DynamoDB local running
 ## Homework Challenges    
 ### 1. Run the dockerfile CMD as an external script
 ### 2. Push and tag a image to DockerHub (they have a free tier)
+- Created a dockerhub account and login
+- Run `docker images`
+- Login to docker hub via the CLI `docker login`
+- It will prompt for `username` and `password` 
+- Tag your docker image 
+```sh
+docker tag dockername:version tagname/dockername
+```
+- Push image
+```
+docker push dockername
+```
 ### 3. Use multi-stage building for a Dockerfile build
 ### 4. Implement a healthcheck in the V3 Docker compose file
 ### 5. Research best practices of Dockerfiles and attempt to implement it in your Dockerfile
