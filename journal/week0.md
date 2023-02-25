@@ -86,7 +86,22 @@ I also created  budget via the AWS managment console and AWS CLI. After which I 
 
 ### 1. Destroy root account credentials, Set MFA, IAM role
 
+- To destroy or stop using my root account credentials I created an Admin user with with the `AdministratorAccess` permission
+- I set up MFA on my root account and Admin user account to add an extra security layer during login.
+- I created an IAM role for which I name `S3_Lambda` which will allows Lambda functions to call AWS services on your behalf.
+
+![S3 Lambda role](./assets/s3-lambda_role.png)
+
 ### 2. Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue
+
+- I started by creating an SNS topic `health-issue`
+
+![SNS Topic](./assets/sns-topic.png)
+
+- Then I followed the guide in this [AWS tutorial](https://docs.aws.amazon.com/health/latest/ug/cloudwatch-events-health.html) to create create the EventBridge Rule to hookup Health Dashboard.
+
+![SNS Topic](./assets/amazon-eventbridge.png)
+
 
 ### 3. Review all the questions of each pillars in the Well Architected Tool (No specialized lens)
 
