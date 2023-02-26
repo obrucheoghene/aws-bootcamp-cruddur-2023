@@ -23,7 +23,6 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.trace.export import ConsoleSpanExporter, SimpleSpanProcessor
 
-
 # HoneyComb -------
 # Initialize tracing and an exporter that can send data to Honeycomb
 provider = TracerProvider()
