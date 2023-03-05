@@ -23,3 +23,10 @@ Update gitpod to start frontend-reactjs
 Add AWS-xray-sdk to backend requirment
 - Import aws-xray-sdk
 - Create sampling
+
+AWS X-Ray makes it easy for developers to analyze the behavior of their distributed applications by providing request tracing, exception collection, and profiling capabilities.
+
+- Create sampling rules
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+
+-- set up deamon - add to docker composer
