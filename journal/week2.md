@@ -30,3 +30,5 @@ AWS X-Ray makes it easy for developers to analyze the behavior of their distribu
 aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
 
 -- set up deamon - add to docker composer
+
+- We need to add these two env vars to our backend-flask in our docker-compose.yml file
