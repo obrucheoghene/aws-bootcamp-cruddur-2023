@@ -16,3 +16,10 @@ but in practice, don't do that, you have to optimize you production image so hav
 
 In development you may go for ubuntu, you need ssh and vim installed 
 but for production you basically use Alpine linus a very slim build of linus and you don't need ssh and vim installed.
+
+XRAY
+
+Update gitpod to start frontend-reactjs
+Add AWS-xray-sdk to backend requirment
+- Import aws-xray-sdk
+- Create sampling
