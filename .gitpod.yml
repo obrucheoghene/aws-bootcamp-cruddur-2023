@@ -21,7 +21,7 @@ tasks:
       sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev
   - name: react-js
-    before: cd frontend-react
+    before: cd frontend-react-js
     init: npm install
 
 ports:
