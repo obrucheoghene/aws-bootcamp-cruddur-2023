@@ -55,9 +55,6 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
 
-
-### 2. Run queries to explore traces within Honeycomb.io
-
 - I created a trace span in the `HomeActivities`
 - Added attribute to the span
 
@@ -124,9 +121,13 @@ class HomeActivities:
 ![honeycomb](./assets/honeycomb-span2.png)
 
 
+### 2. Run queries to explore traces within Honeycomb.io
 
+I ran some queries to expore traces with Honeycomb
 
+![honeycomb Queries](./assets/Honeycomb-queries.png)
 
+![honeycomb Queries](./assets/honeycomb-queries2.png)
 
 ### 3. Instrument AWS X-Ray into backend flask application
 
