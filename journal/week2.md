@@ -11,6 +11,13 @@ gp env HONEYCOMB_API_KEY=""
 ```
 - I added the `OTEL_SERVICE_NAME` to `backend-flask` environment of my `docker-compose.yml` to make the service name specific to a service which will make tracing more easier.
 
+- I added `OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` to my `backend-flask` environment of my `docker-compose.yml` to configure Opentelementry to send data to honeycomb.
+
+**OpenTelemetry also know as OTEL is an open source observibility framework and standard for instrumenting, generating, collectin and exporting telemetry data such as traces, metrics and logs.**
+
+- 
+
+
 
 
 ### 2. Run queries to explore traces within Honeycomb.io
