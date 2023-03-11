@@ -48,6 +48,13 @@ trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 ```
 
+- Below this line of code `app = Flask(__name__)` I add the code below to initialize automatic instrumentation with Flask
+
+```py
+FlaskInstrumentor().instrument_app(app)
+RequestsInstrumentor().instrument()
+```
+
 
 ### 2. Run queries to explore traces within Honeycomb.io
 
