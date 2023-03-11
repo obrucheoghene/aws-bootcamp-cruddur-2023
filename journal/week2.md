@@ -132,6 +132,23 @@ I ran some queries to expore traces with Honeycomb
 
 ### 3. Instrument AWS X-Ray into backend flask application
 
+- I added `aws-xray-sdk` dependencies to `backend-flask` `requirment.txt` and installed it
+```sh
+pip install -r requirement
+```
+
+- I imported  aws-xray-sdk
+- Create sampling
+
+AWS X-Ray makes it easy for developers to analyze the behavior of their distributed applications by providing request tracing, exception collection, and profiling capabilities.
+
+- Create sampling rules
+aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
+
+-- set up deamon - add to docker composer
+
+- We need to add these two env vars to our backend-flask in our docker-compose.yml file
+
 
 ### 4. Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API
 
@@ -145,6 +162,10 @@ I ran some queries to expore traces with Honeycomb
 
 
 ### 8. Install WatchTower and write a custom logger to send application log data to CloudWatch Log group
+
+
+### Home work Challenges
+- Update gitpod to start frontend-reactjs
 
 
 In setting up Honeycomp for project
@@ -164,18 +185,3 @@ but in practice, don't do that, you have to optimize you production image so hav
 In development you may go for ubuntu, you need ssh and vim installed 
 but for production you basically use Alpine linus a very slim build of linus and you don't need ssh and vim installed.
 
-XRAY
-
-Update gitpod to start frontend-reactjs
-Add AWS-xray-sdk to backend requirment
-- Import aws-xray-sdk
-- Create sampling
-
-AWS X-Ray makes it easy for developers to analyze the behavior of their distributed applications by providing request tracing, exception collection, and profiling capabilities.
-
-- Create sampling rules
-aws xray create-sampling-rule --cli-input-json file://aws/json/xray.json
-
--- set up deamon - add to docker composer
-
-- We need to add these two env vars to our backend-flask in our docker-compose.yml file
