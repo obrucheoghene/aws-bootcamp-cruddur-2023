@@ -59,6 +59,7 @@ RequestsInstrumentor().instrument()
 ### 2. Run queries to explore traces within Honeycomb.io
 
 - I created a trace span in the `HomeActivities`
+- Added attribute to the span
 
 ```py
 from datetime import datetime, timedelta, timezone
@@ -70,7 +71,8 @@ class HomeActivities:
   def run():
     # trace
     with tracer.start_as_current_span("home-activities-mock-data"):
-      span = trace.get_current_span() #span
+      # create span
+      span = trace.get_current_span() 
       now = datetime.now(timezone.utc).astimezone()
       span.set_attribute("app.now", now.isoformat())
       results = [{
@@ -112,6 +114,7 @@ class HomeActivities:
         'replies': []
       }
       ]
+      # set span atribute
       span.set_attribute("app.result", len(results))
       return results
 ```
