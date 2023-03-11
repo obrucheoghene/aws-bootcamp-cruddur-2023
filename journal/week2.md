@@ -7,10 +7,10 @@
 - I grabed my API keys from honey comb and set it in my environment variable and gitpod as well.
 ```
 export HONEYCOMB_API_KEY=""
-export HONEYCOMB_SERVICE_NAME="Cruddur"
 gp env HONEYCOMB_API_KEY=""
-gp env HONEYCOMB_SERVICE_NAME="Cruddur"
 ```
+- I added the `OTEL_SERVICE_NAME` to `backend-flask` environment of my `docker-compose.yml` to make the service name specific to a service which will make tracing more easier.
+
 
 
 ### 2. Run queries to explore traces within Honeycomb.io
