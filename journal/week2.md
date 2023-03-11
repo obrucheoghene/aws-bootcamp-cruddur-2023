@@ -129,6 +129,7 @@ I ran some queries to expore traces with Honeycomb
 
 ![honeycomb Queries](./assets/honeycomb-queries2.png)
 
+
 ### 3. Instrument AWS X-Ray into backend flask application
 
 
