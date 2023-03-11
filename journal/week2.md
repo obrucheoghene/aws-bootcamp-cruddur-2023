@@ -56,6 +56,9 @@ RequestsInstrumentor().instrument()
 ```
 
 
+
+
+
 ### 2. Run queries to explore traces within Honeycomb.io
 
 
