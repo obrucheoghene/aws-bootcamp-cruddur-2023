@@ -1,5 +1,31 @@
 # Week 2 — Distributed Tracing
 
+## Required Homework
+
+### 1. Instrument our backend flask application to use Open Telemetry (OTEL) with Honeycomb.io as the provider
+
+
+
+### 2. Run queries to explore traces within Honeycomb.io
+
+
+### 3. Instrument AWS X-Ray into backend flask application
+
+
+### 4. Configure and provision X-Ray daemon within docker-compose and send data back to X-Ray API
+
+
+### 5. Observe X-Ray traces within the AWS Console
+
+### 6. Integrate Rollbar for Error Logging
+
+
+### 7. Trigger an error an observe an error with Rollbar
+
+
+### 8. Install WatchTower and write a custom logger to send application log data to CloudWatch Log group
+
+
 In setting up Honeycomp for project
 It is best practice to set up the OTEL service name in the dockercompose file. this is to ensure that every service have a unique name assigned to them.
 
