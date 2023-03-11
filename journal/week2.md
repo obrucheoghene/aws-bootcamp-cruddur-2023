@@ -5,7 +5,7 @@
 ### 1. Instrument our backend flask application to use Open Telemetry (OTEL) with Honeycomb.io as the provider
 
 - I grabed my API keys from honey comb and set it in my environment variable and gitpod as well.
-```
+```sh
 export HONEYCOMB_API_KEY=""
 gp env HONEYCOMB_API_KEY=""
 ```
@@ -15,9 +15,19 @@ gp env HONEYCOMB_API_KEY=""
 
 **OpenTelemetry also know as OTEL is an open source observibility framework and standard for instrumenting, generating, collectin and exporting telemetry data such as traces, metrics and logs.**
 
-- 
-
-
+- Added `Opentelemetry` dependencies to `requirement.txt`
+```
+opentelemetry-api 
+opentelemetry-sdk 
+opentelemetry-exporter-otlp-proto-http 
+opentelemetry-instrumentation-flask 
+opentelemetry-instrumentation-requests
+```
+- Installed the dependencies
+```sh
+cd backend-flask/
+pip install -r requirement.txt
+```
 
 
 ### 2. Run queries to explore traces within Honeycomb.io
