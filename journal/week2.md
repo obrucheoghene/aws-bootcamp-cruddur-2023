@@ -29,6 +29,25 @@ cd backend-flask/
 pip install -r requirement.txt
 ```
 
+- I imported Opentelemtry in my `backend-flask` `app.py`
+```py
+from opentelemetry import trace
+from opentelemetry.instrumentation.flask import FlaskInstrumentor
+from opentelemetry.instrumentation.requests import RequestsInstrumentor
+from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+```
+
+- I initialized tracing and an exporter that can send data to Honeycomb
+```py
+provider = TracerProvider()
+processor = BatchSpanProcessor(OTLPSpanExporter())
+provider.add_span_processor(processor)
+trace.set_tracer_provider(provider)
+tracer = trace.get_tracer(__name__)
+```
+
 
 ### 2. Run queries to explore traces within Honeycomb.io
 
