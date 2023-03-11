@@ -55,6 +55,11 @@ FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
 ```
 
+Here are the data I sent to HoneyComb
+
+![honeycomb](./assets/honeycomb-span.png)
+
+![honeycomb](./assets/honeycomb-span2.png)
 
 
 
