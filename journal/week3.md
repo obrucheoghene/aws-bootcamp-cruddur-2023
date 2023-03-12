@@ -15,7 +15,7 @@ AWS Cognito is a powerful and flexible identity and access management service th
 **User Pools**
 Amazon Cognito user pools are a managed service that lets you add secure authentication and authorization to your apps, and can scale to support millions of users.
 
-### Provision Cognito User Pool
+#### Provision Cognito User Pool
 Here is the user pool I created using the AWS console
 ![AWS Cognito user Pool](./assets/aws-cognito-userpool-created.png)
 
@@ -25,7 +25,7 @@ cd frontend-react-js
 npm i aws-amplify --save
 ```
 
-### Configure Amplify
+#### Configure Amplify
 I configured amplify by importing it into my `App.js` and add the configure script below
 
 ```js
@@ -48,7 +48,11 @@ Amplify.configure({
 
 ```
 
-In configuring Amplify, I imported the Ampli
+#### Conditionally show components based on logged in or logged out
+Inside my `HomeFeedPage.js` I imported Auth from aws-amplify
+```js
+import { Auth } from 'aws-amplify';
+```
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
