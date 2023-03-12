@@ -123,6 +123,10 @@ const onsubmit = async (event) => {
   }
   
 ```
+Here is signin page responding with the right error when user email or password is not found or incorrect
+
+![SignIn page error](./assets/sigin-error.png)
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
