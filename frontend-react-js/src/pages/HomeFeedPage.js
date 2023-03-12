@@ -69,6 +69,9 @@ const checkAuth = async () => {
 
 // check when the page loads if we are authenicated
 React.useEffect(()=>{
+  // prevent double call
+  if (dataFetchedRef.current) return;
+  dataFetchedRef.current = true;
   loadData();
   checkAuth();
 }, [])
