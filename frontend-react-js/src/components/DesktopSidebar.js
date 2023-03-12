@@ -24,7 +24,6 @@ export default function DesktopSidebar(props) {
     suggested = <SuggestedUsersSection users={users} />
   }else{
     join = <JoinSection />
-
   }
 
   return (
