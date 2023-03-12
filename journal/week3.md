@@ -49,7 +49,7 @@ Amplify.configure({
 ```
 
 #### Conditionally show components based on logged in or logged out
-Inside my `HomeFeedPage.js` I imported Auth from aws-amplify
+Inside my `HomeFeedPage.js` I imported `Auth` from `aws-amplify`
 ```js
 import { Auth } from 'aws-amplify';
 ```
@@ -83,7 +83,21 @@ I confirmed `user` was passed to the  to the following components:
 <DesktopSidebar user={user} />
 ```
 
-I Updated Profile Info
+In `ProfileInfo.js` I imported `Auth` from `aws-amplify`
+```js
+import { Auth } from 'aws-amplify';
+```
+I updated the `signOut()` function with the script below
+```js
+const signOut = async () => {
+  try {
+      await Auth.signOut({ global: true });
+      window.location.href = "/"
+  } catch (error) {
+      console.log('error signing out: ', error);
+  }
+}
+```
 
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
