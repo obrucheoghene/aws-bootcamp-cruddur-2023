@@ -127,6 +127,17 @@ Here is signin page responding with the right error when user email or password 
 
 ![SignIn page error](./assets/sigin-error.png)
 
+To try sigin, I maually created a used from the AWS console and I changed the user's password and updated its confirm status using:
+
+```sh
+aws cognito-idp admin-set-user-password \
+  --user-pool-id <your-user-pool-id> \
+  --username <username> \
+  --password <password> \
+  --permanent
+```
+![User pool confirmed](./assets/userpools-confirmed.png)
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
