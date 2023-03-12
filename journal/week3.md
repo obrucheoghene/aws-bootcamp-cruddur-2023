@@ -99,6 +99,32 @@ const signOut = async () => {
 }
 ```
 
+In `SigninPage.js` I imported `Auth` from `aws-amplify` and updated the `onsubmit()` function
+
+```js
+import { Auth } from 'aws-amplify';
+
+
+  const onsubmit = async (event) => {
+    setErrors('')
+    event.preventDefault();
+    try {
+      Auth.signIn(username, password)
+        .then(user => {
+          localStorage.setItem("access_token", user.signInUserSession.accessToken.jwtToken)
+          window.location.href = "/"
+        })
+        .catch(err => { console.log('Error!', err) });
+    } catch (error) {
+      if (error.code == 'UserNotConfirmedException') {
+        window.location.href = "/confirm"
+      }
+      setErrors(error.message)
+    }
+    return false
+  }
+
+```
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
