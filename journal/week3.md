@@ -77,6 +77,12 @@ const checkAuth = async () => {
 };
 ```
 
+I passed the `user` to the following components:
+```js
+<DesktopNavigation user={user} active={'home'} setPopped={setPopped} />
+<DesktopSidebar user={user} />
+```
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
