@@ -18,6 +18,13 @@ Amazon Cognito user pools are a managed service that lets you add secure authent
 Her is the user pool I created for the cruddur project
 ![AWS Cognito user Pool](./assets/aws-cognito-userpool-created.png)
 
+#### Install AWS Amplify
+```sh
+cd frontend-react-js
+npm i aws-amplify --save
+```
+
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
