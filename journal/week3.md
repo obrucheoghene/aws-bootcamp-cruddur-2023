@@ -10,8 +10,7 @@ In contrast, decentralized authentication is based on distributed systems and te
 ### 1. Provision via ClickOps a Amazon Cognito User Pool
 
 **Amazon Cognito**
-
-
+AWS Cognito is a powerful and flexible identity and access management service that enables developers to add user authentication, authorization, and management features to their applications quickly and easily
 
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
