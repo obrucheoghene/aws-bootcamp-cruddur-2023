@@ -8,7 +8,8 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"42Crunch.vscode-openapi",
-				"cweijan.vscode-postgresql-client2"
+				"cweijan.vscode-postgresql-client2",
+				"ms-python.python"
 			]
 		}
 	}
