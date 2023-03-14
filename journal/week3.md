@@ -140,6 +140,8 @@ aws cognito-idp admin-set-user-password \
 
 I successfully signed in after confirming user status
 
+![Cruddur signin successful](./assets/cruddur_signin_successful.png)
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
