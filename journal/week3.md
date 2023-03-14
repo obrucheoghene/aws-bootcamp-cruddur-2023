@@ -265,7 +265,13 @@ Here is my solution
 
 ```
 
+Confirmation Code Email
 
+![Confirmation Code Email](./assets/confirmation_email_code.png)
+
+Confirmation page
+
+![Confirmation page](./assets/confirmatinpage.png)
 
 
 
