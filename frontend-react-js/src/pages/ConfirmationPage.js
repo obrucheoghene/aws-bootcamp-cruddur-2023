@@ -22,35 +22,9 @@ export default function ConfirmationPage() {
     setEmail(event.target.value);
   }
 
-  // const resend_code = async (event) => {
-  //   console.log('resend_code')
-  //   // [TODO] Authenication
-  // }
-
-  // const onsubmit = async (event) => {
-  //   event.preventDefault();
-  //   console.log('ConfirmationPage.onsubmit')
-  //   // [TODO] Authenication
-  //   if (Cookies.get('user.email') === undefined || Cookies.get('user.email') === '' || Cookies.get('user.email') === null){
-  //     setErrors("You need to provide an email in order to send Resend Activiation Code")   
-  //   } else {
-  //     if (Cookies.get('user.email') === email){
-  //       if (Cookies.get('user.confirmation_code') === code){
-  //         Cookies.set('user.logged_in',true)
-  //         window.location.href = "/"
-  //       } else {
-  //         setErrors("Code is not valid")
-  //       }
-  //     } else {
-  //       setErrors("Email is invalid or cannot be found.")   
-  //     }
-  //   }
-  //   return false
-  // }
-
 
   const resend_code = async (event) => {
-    setCognitoErrors('')
+    setErrors('')
     try {
       await Auth.resendSignUp(email);
       console.log('code resent successfully');
@@ -61,21 +35,21 @@ export default function ConfirmationPage() {
       // for this to be an okay match?
       console.log(err)
       if (err.message == 'Username cannot be empty'){
-        setCognitoErrors("You need to provide an email in order to send Resend Activiation Code")   
+        setErrors("You need to provide an email in order to send Resend Activiation Code")   
       } else if (err.message == "Username/client id combination not found."){
-        setCognitoErrors("Email is invalid or cannot be found.")   
+        setErrors("Email is invalid or cannot be found.")   
       }
     }
   }
   
   const onsubmit = async (event) => {
     event.preventDefault();
-    setCognitoErrors('')
+    setErrors('')
     try {
       await Auth.confirmSignUp(email, code);
       window.location.href = "/"
     } catch (error) {
-      setCognitoErrors(error.message)
+      setErrors(error.message)
     }
     return false
   }
