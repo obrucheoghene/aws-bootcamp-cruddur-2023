@@ -295,6 +295,16 @@ I added api authorization header in `HomeFeedPage.js` to pass `access token` whe
   }
 ```
 
+Fixed CORS errors b
+```py
+cors = CORS(
+  app, 
+  resources={r"/api/*": {"origins": origins}},
+  headers=['Content-Type', 'Authorization'], 
+  expose_headers='Authorization',
+  methods="OPTIONS,GET,HEAD,POST"
+)
+```
 
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
