@@ -212,6 +212,34 @@ import { Auth } from 'aws-amplify';
 
 ```
 
+I imported `Auth` from `aws-amplify` and I updated the `onsubmit_send_code` and `onsubmit_confirm_code` functions in   `RecoverPage.js` 
+
+```js
+import { Auth } from 'aws-amplify';
+
+  const onsubmit_send_code = async (event) => {
+    event.preventDefault();
+    setCognitoErrors('')
+    Auth.forgotPassword(username)
+    .then((data) => setFormState('confirm_code') )
+    .catch((err) => setCognitoErrors(err.message) );
+    return false
+  }
+  
+  const onsubmit_confirm_code = async (event) => {
+    event.preventDefault();
+    setCognitoErrors('')
+    if (password == passwordAgain){
+      Auth.forgotPasswordSubmit(username, code, password)
+      .then((data) => setFormState('success'))
+      .catch((err) => setCognitoErrors(err.message) );
+    } else {
+      setCognitoErrors('Passwords do not match')
+    }
+    return false
+  }
+
+```
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
