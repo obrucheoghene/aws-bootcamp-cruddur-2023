@@ -142,6 +142,37 @@ I successfully signed in after confirming user status
 
 ![Cruddur signin successful](./assets/cruddur_signin_successful.png)
 
+Just as I did in `SinginPage.js`, I imported `Auth` from `aws-amplify` and updated the `onsubmit()` function in the `SignupPage.js`
+```js
+import { Auth } from 'aws-amplify';
+
+
+const onsubmit = async (event) => {
+  event.preventDefault();
+  setErrors('')
+  try {
+      const { user } = await Auth.signUp({
+        username: email,
+        password: password,
+        attributes: {
+            name: name,
+            email: email,
+            preferred_username: username,
+        },
+        autoSignIn: { // optional - enables auto sign in after user is confirmed
+            enabled: true,
+        }
+      });
+      console.log(user);
+      window.location.href = `/confirm?email=${email}`
+  } catch (error) {
+      console.log(error);
+      setErrors(error.message)
+  }
+  return false
+}
+  
+```
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
