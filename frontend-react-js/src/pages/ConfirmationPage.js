@@ -1,6 +1,6 @@
 import './ConfirmationPage.css';
 import React from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import {ReactComponent as Logo} from '../components/svg/logo.svg';
 import { Auth } from 'aws-amplify';
 
@@ -13,7 +13,8 @@ export default function ConfirmationPage() {
   const [errors, setErrors] = React.useState('');
   const [codeSent, setCodeSent] = React.useState(false);
 
-  const params = useParams();
+  // const params = useParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const code_onchange = (event) => {
     setCode(event.target.value);
@@ -71,8 +72,8 @@ export default function ConfirmationPage() {
   }
 
   React.useEffect(()=>{
-    if (params.email) {
-      setEmail(params.email)
+    if (searchParams.get('email')) {
+      setEmail(searchParams.get('email'))
     }
   }, [])
 

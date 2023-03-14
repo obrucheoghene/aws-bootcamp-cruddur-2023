@@ -238,8 +238,37 @@ import { Auth } from 'aws-amplify';
     }
     return false
   }
+```
+I noticed a bug in the `ConfirmationPage.js` which I successfully fixed. Andrew Brown made some comment on it in the video. It was about the confirmation email not showing up in email input. The bug was that he use `useParams` instead of `useSearchParams` to get email value from the confirmation url.
+
+Here is the previous code
+```js
+  const params = useParams();
+
+    React.useEffect(()=>{
+    if (params.email) {
+      setEmail(params.email)
+    }
+  }, [])
 
 ```
+
+Here is my solution 
+```js
+  const [searchParams, setSearchParams] = useSearchParams();
+
+    React.useEffect(()=>{
+    if (searchParams.get('email')) {
+      setEmail(searchParams.get('email'))
+    }
+  }, [])
+
+```
+
+
+
+
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
