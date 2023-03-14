@@ -287,6 +287,14 @@ Here is `RecoverPage.js` working as it should
 ![RecoverPage Reset](./assets/reset_password.png )
 
 
+I added api authorization header in `HomeFeedPage.js` to pass `access token` when making api calls to the `backend_flask`
+
+```js
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("access_token")}`
+  }
+```
+
 
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
