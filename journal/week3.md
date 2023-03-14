@@ -171,8 +171,47 @@ const onsubmit = async (event) => {
   }
   return false
 }
-  
 ```
+
+On the `ConfirmationPage.js` I update the `resend_code` and `onsubmit` functions
+
+```js
+import { Auth } from 'aws-amplify';
+
+
+  const resend_code = async (event) => {
+    setCognitoErrors('')
+    try {
+      await Auth.resendSignUp(email);
+      console.log('code resent successfully');
+      setCodeSent(true)
+    } catch (err) {
+      // does not return a code
+      // does cognito always return english
+      // for this to be an okay match?
+      console.log(err)
+      if (err.message == 'Username cannot be empty'){
+        setCognitoErrors("You need to provide an email in order to send Resend Activiation Code")   
+      } else if (err.message == "Username/client id combination not found."){
+        setCognitoErrors("Email is invalid or cannot be found.")   
+      }
+    }
+  }
+  
+  const onsubmit = async (event) => {
+    event.preventDefault();
+    setCognitoErrors('')
+    try {
+      await Auth.confirmSignUp(email, code);
+      window.location.href = "/"
+    } catch (error) {
+      setCognitoErrors(error.message)
+    }
+    return false
+  }
+
+```
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
