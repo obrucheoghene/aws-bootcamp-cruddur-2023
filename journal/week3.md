@@ -138,6 +138,8 @@ aws cognito-idp admin-set-user-password \
 ```
 ![User pool confirmed](./assets/userpools-confirmed.png)
 
+I successfully signed in after confirming user status
+
 
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
