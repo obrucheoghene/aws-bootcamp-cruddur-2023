@@ -276,6 +276,8 @@ Confirmation page
 
 
 
+
+
 ### 2. Install and configure Amplify client-side library for Amazon Congito
 ### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
 ### 4. Show conditional elements and data based on logged in or logged out
