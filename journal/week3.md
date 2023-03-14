@@ -212,33 +212,6 @@ import { Auth } from 'aws-amplify';
 
 ```
 
-I imported `Auth` from `aws-amplify` and I updated the `onsubmit_send_code` and `onsubmit_confirm_code` functions in   `RecoverPage.js` 
-
-```js
-import { Auth } from 'aws-amplify';
-
-  const onsubmit_send_code = async (event) => {
-    event.preventDefault();
-    setCognitoErrors('')
-    Auth.forgotPassword(username)
-    .then((data) => setFormState('confirm_code') )
-    .catch((err) => setCognitoErrors(err.message) );
-    return false
-  }
-  
-  const onsubmit_confirm_code = async (event) => {
-    event.preventDefault();
-    setCognitoErrors('')
-    if (password == passwordAgain){
-      Auth.forgotPasswordSubmit(username, code, password)
-      .then((data) => setFormState('success'))
-      .catch((err) => setCognitoErrors(err.message) );
-    } else {
-      setCognitoErrors('Passwords do not match')
-    }
-    return false
-  }
-```
 I noticed a bug in the `ConfirmationPage.js` which I successfully fixed. Andrew Brown made some comment on it in the video. It was about the confirmation email not showing up in email input. The bug was that he use `useParams` instead of `useSearchParams` to get email value from the confirmation url.
 
 Here is the previous code
@@ -273,7 +246,45 @@ Confirmation page
 
 ![Confirmation page](./assets/confirmatinpage.png)
 
+Confirmation Status in AWS Cognito
 
+![Confirmation Status in AWS Cognito](./assets/aws_userpool_confirm.png )
+
+
+
+I imported `Auth` from `aws-amplify` and I updated the `onsubmit_send_code` and `onsubmit_confirm_code` functions in   `RecoverPage.js` 
+
+```js
+import { Auth } from 'aws-amplify';
+
+  const onsubmit_send_code = async (event) => {
+    event.preventDefault();
+    setCognitoErrors('')
+    Auth.forgotPassword(username)
+    .then((data) => setFormState('confirm_code') )
+    .catch((err) => setCognitoErrors(err.message) );
+    return false
+  }
+  
+  const onsubmit_confirm_code = async (event) => {
+    event.preventDefault();
+    setCognitoErrors('')
+    if (password == passwordAgain){
+      Auth.forgotPasswordSubmit(username, code, password)
+      .then((data) => setFormState('success'))
+      .catch((err) => setCognitoErrors(err.message) );
+    } else {
+      setCognitoErrors('Passwords do not match')
+    }
+    return false
+  }
+```
+Here is `RecoverPage.js` working as it should
+
+![RecoverPage ](./assets/recover_password.png )
+
+
+![RecoverPage Reset](./assets/reset_password.png )
 
 
 
