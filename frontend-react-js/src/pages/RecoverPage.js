@@ -13,18 +13,6 @@ export default function RecoverPage() {
   const [errors, setErrors] = React.useState('');
   const [formState, setFormState] = React.useState('send_code');
 
-  // const onsubmit_send_code = async (event) => {
-  //   event.preventDefault();
-  //   console.log('onsubmit_send_code')
-  //   return false
-  // }
-  // const onsubmit_confirm_code = async (event) => {
-  //   event.preventDefault();
-  //   console.log('onsubmit_confirm_code')
-  //   return false
-  // }
-
-
 
   const onsubmit_send_code = async (event) => {
     event.preventDefault();
