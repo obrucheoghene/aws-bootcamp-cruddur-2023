@@ -9,24 +9,15 @@ export default function ProfileInfo(props) {
   const [popped, setPopped] = React.useState(false);
 
   const click_pop = (event) => {
-    setPopped(!popped)
+    setPopped(!popped);
   }
 
-  //const signOut = async () => {
-  //  console.log('signOut')
-    // [TODO] Authenication
-  //  Cookies.remove('user.logged_in')
-    //Cookies.remove('user.name')
-    //Cookies.remove('user.username')
-    //Cookies.remove('user.email')
-    //Cookies.remove('user.password')
-    //Cookies.remove('user.confirmation_code')
-  //  window.location.href = "/"
-  //}
+
   const signOut = async () => {
     try {
         await Auth.signOut({ global: true });
-        window.location.href = "/"
+        localStorage.removeItem("access_token");
+        window.location.href = "/";
     } catch (error) {
         console.log('error signing out: ', error);
     }
