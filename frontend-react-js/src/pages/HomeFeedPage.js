@@ -29,6 +29,7 @@ export default function HomeFeedPage() {
       });
       let resJson = await res.json();
       if (res.status === 200) {
+        console.log(resJson)
         setActivities(resJson)
       } else {
         console.log(res)
