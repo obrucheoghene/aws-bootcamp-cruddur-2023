@@ -19,6 +19,9 @@ Amazon Cognito user pools are a managed service that lets you add secure authent
 Here is the user pool I created using the AWS console
 ![AWS Cognito user Pool](./assets/aws-cognito-userpool-created.png)
 
+
+### 2. Install and configure Amplify client-side library for Amazon Congito
+
 #### Install AWS Amplify
 ```sh
 cd frontend-react-js
@@ -48,7 +51,8 @@ Amplify.configure({
 
 ```
 
-#### Conditionally show components based on logged in or logged out
+### 4. Show conditional elements and data based on logged in or logged out
+
 Inside my `HomeFeedPage.js` I imported `Auth` from `aws-amplify`
 ```js
 import { Auth } from 'aws-amplify';
@@ -98,6 +102,8 @@ const signOut = async () => {
   }
 }
 ```
+
+### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
 
 In `SigninPage.js` I imported `Auth` from `aws-amplify` and updated the `onsubmit()` function
 
@@ -295,7 +301,7 @@ I added api authorization header in `HomeFeedPage.js` to pass `access token` whe
   }
 ```
 
-Fixed CORS errors b
+Fixed CORS errors by updating the cors configuration in `app.js` in `backend-flask` with
 ```py
 cors = CORS(
   app, 
@@ -307,7 +313,9 @@ cors = CORS(
 ```
 
 
-### 2. Install and configure Amplify client-side library for Amazon Congito
-### 3. Implement API calls to Amazon Coginto for custom login, signup, recovery and forgot password page
-### 4. Show conditional elements and data based on logged in or logged out
+
 ### 5. Verify JWT Token server side to serve authenticated API endpoints in Flask Application
+
+I used `Flask-AWSCognito` to verify `JWT` token on the `backendflask`
+
+![JWT Verification ](./assets/jwt-authenticated.png )
