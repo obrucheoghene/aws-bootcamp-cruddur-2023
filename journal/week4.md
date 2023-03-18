@@ -26,3 +26,8 @@ aws rds create-db-instance \
 ![Progress DB Instance](./assets/progress-db-instance.png)
 
 ![Progress DB Instance Console](./assets/db-instance-console.png)
+
+
+I connected to postgres with connection url
+
+![Postgresql connection url](./assets/psql-connection-url.png)
