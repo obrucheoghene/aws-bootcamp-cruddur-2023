@@ -1,1 +1,4 @@
-#!/usr/bin/bash 
+#!/usr/bin/bash
+
+DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<< "$POSTGRESQL_CONNECTION_URL")
+psql $DB_CONNECTION_URL -c "CREATE DATABASE cruddur;"
