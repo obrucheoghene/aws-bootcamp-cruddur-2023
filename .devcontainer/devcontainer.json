@@ -7,7 +7,7 @@
 		"AWS_CLI_AUTO_PROMPT": "on-partial"
 	},
 
-	"postCreateCommand": "cd frontend-react-js && npm install",
+	"postCreateCommand": "apt-get update && apt-get install -y postgresql postgresql-contrib && cd frontend-react-js && npm install",
 
 	"forwardPorts": [3000, 4567],
 	"portsAttributes": {
