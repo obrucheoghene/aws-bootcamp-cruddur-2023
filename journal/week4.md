@@ -142,6 +142,8 @@ CREATE DATABASE database_name; -- Create a new database
 DROP DATABASE database_name; -- Delete a database
 \q # -- Quit psql
 ```
+![Postgresql DB Command](./assets/db-command-operation.png)
+
 
 
 
