@@ -145,16 +145,7 @@ DROP DATABASE database_name; -- Delete a database
 ![Postgresql DB Command](./assets/db-command-operation.png)
 
 
-
-
-
-I connected to postgres with connection url
-
-![Postgresql connection url](./assets/psql-connection-url.png)
-
-![Postgresql Cruddur table](./assets/list-cruddur-tables.png)
-
-View table in POSTGRES extension
+I connect to `cruddur` database with postgres db extension    
 ![Postgresql table in extensions](./assets/seed-user-data.png)
 
 
