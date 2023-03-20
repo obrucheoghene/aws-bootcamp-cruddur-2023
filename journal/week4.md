@@ -153,8 +153,24 @@ from pg_stat_activity;"
 ```
 
 **Setup Database**
+`db-setup`
 ```sh
 #!/usr/bin/bash
+-e
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="SHOW ALL DB CONNECTIONS"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+BIN_PATH=$(realpath .)/bin
+
+source "$BIN_PATH/db-drop"
+source "$BIN_PATH/db-create"
+source "$BIN_PATH/db-schema-load"
+source "$BIN_PATH/db-seed"
 ```
 
 
