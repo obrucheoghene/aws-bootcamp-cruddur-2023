@@ -9,7 +9,7 @@ printf "${CYAN}${LABEL}${NO_COLOR}\n"
 
 SCHEMA_PATH=$(realpath .)/db/schema.sql
 
-if ["$1" = "prod"]; then
+if [ "$1" = "prod" ]; then
     echo "RUNNING IN PRODUCTION"
     CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
 else

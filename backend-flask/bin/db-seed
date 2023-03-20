@@ -11,7 +11,7 @@ SEED_PATH=$(realpath .)/db/seed.sql
 
 CONNECTION_URL=$POSTGRESQL_CONNECTION_URL
 
-if ["$1" = "prod"]; then
+if [ "$1" = "prod" ]; then
     echo "USING PRODUCTION URL"
     CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
 else
