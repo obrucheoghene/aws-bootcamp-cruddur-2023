@@ -144,18 +144,54 @@ DROP DATABASE database_name; -- Delete a database
 ```
 ![Postgresql DB Command](./assets/db-command-operation.png)
 
+I connect to `cruddur` database with postgres db extension  
 
-I connect to `cruddur` database with postgres db extension    
 ![Postgresql table in extensions](./assets/seed-user-data.png)
+
+### Work with UUIDs and PSQL extensions
+Added UUID to PSQL
+```psql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+```
+
+### Create a schema SQL file by hand
+
+Here i my SLQ schema file in `backend-flask\db`
+`schema.sql`
+```sql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+DROP TABLE IF EXISTS public.users;
+
+DROP TABLE IF EXISTS public.activities;
+
+CREATE TABLE public.users (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  display_name text,
+  handle text,
+  cognito_user_id text,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+
+
+CREATE TABLE public.activities (
+  uuid UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_uuid UUID NOT NULL,
+  message text NOT NULL,
+  replies_count integer DEFAULT 0,
+  reposts_count integer DEFAULT 0,
+  likes_count integer DEFAULT 0,
+  reply_to_activity_uuid integer,
+  expires_at TIMESTAMP,
+  created_at TIMESTAMP default current_timestamp NOT NULL
+);
+```
 
 
 
 
     Remotely connect to RDS instance
     Programmatically update a security group rule
-    Operate common SQL commands
-    Create a schema SQL file by hand
-    Work with UUIDs and PSQL extensions
     Implement a postgres client for python using a connection pool
     Troubleshoot common SQL errors
     Implement a Lambda that runs in a VPC and commits code to RDS
