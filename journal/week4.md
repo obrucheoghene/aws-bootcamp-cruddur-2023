@@ -27,10 +27,17 @@ aws rds create-db-instance \
 
 ![Progress DB Instance Console](./assets/db-instance-console.png)
 
+![Progress DB Instance Stopped](./assets/db-instance-stopped.png)
+
 
 I connected to postgres with connection url
 
 ![Postgresql connection url](./assets/psql-connection-url.png)
+
+![Postgresql Cruddur table](./assets/list-cruddur-tables.png)
+
+View table in POSTGRES extension
+![Postgresql table in extensions](./assets/seed-user-data.png)
 
 
 
