@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="DATABASE SEED"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+SEED_PATH=$(realpath .)/db/seed.sql
+
+CONNECTION_URL=$POSTGRESQL_CONNECTION_URL
+
+if ["$1" = "prod"]; then
+    echo "USING PRODUCTION URL"
+    CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
+else
+    echo "USING DEVELOPMENT URL"
+fi
+psql $CONNECTION_URL cruddur < $SEED_PATH
