@@ -152,9 +152,15 @@ psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
 from pg_stat_activity;"
 ```
 
+**Setup Database**
+```sh
+#!/usr/bin/bash
+```
+
+
 ### Operate common SQL commands
 
-# I connected to postgresql with
+**I connected to postgresql with**
 
 ```sh
 psql -Upostgres --host localhost
@@ -173,7 +179,7 @@ DROP DATABASE database_name; -- Delete a database
 ```
 ![Postgresql DB Command](./assets/db-command-operation.png)
 
-I connect to `cruddur` database with postgres db extension  
+I connect to `cruddur` database with postgres db explorer  
 
 ![Postgresql table in extensions](./assets/seed-user-data.png)
 
@@ -215,6 +221,8 @@ CREATE TABLE public.activities (
   created_at TIMESTAMP default current_timestamp NOT NULL
 );
 ```
+
+
 
 
 
