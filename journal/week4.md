@@ -123,6 +123,29 @@ psql $CONNECTION_URL cruddur < $SEED_PATH
 
 ```
 
+### Operate common SQL commands
+
+# I connected to postgresql with
+
+```sh
+psql -Upostgres --host localhost
+```
+In the postgresql interpreter I ran the following commands
+```sh
+\l # -- List all database
+\c <dbname> # -- Connect to a specific database
+\dt # -- List current database tables
+\d <table_name> # -- Describe a specific table 
+\dn # -- List all schemas in the current database
+\du # -- List all users and their roles
+CREATE DATABASE database_name; -- Create a new database
+DROP DATABASE database_name; -- Delete a database
+\q # -- Quit psql
+```
+
+
+
+
 I connected to postgres with connection url
 
 ![Postgresql connection url](./assets/psql-connection-url.png)
@@ -137,7 +160,6 @@ View table in POSTGRES extension
 
     Remotely connect to RDS instance
     Programmatically update a security group rule
-    Write several bash scripts for database operations
     Operate common SQL commands
     Create a schema SQL file by hand
     Work with UUIDs and PSQL extensions
