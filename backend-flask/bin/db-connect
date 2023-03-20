@@ -1,5 +1,12 @@
 #!/usr/bin/bash
 
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="DATABASE CONNECTION"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
 if ["$1" = "prod"]; then
     echo "RUNNING IN PRODUCTION"
     CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
