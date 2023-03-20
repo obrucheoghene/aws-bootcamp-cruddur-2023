@@ -123,6 +123,35 @@ psql $CONNECTION_URL cruddur < $SEED_PATH
 
 ```
 
+**Show all current db connections**
+```sh
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="SHOW ALL DB CONNECTIONS"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+if ["$1" = "prod"]; then
+    echo "RUNNING IN PRODUCTION"
+    CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
+else
+    echo "RUNNING IN DEVELOPMENT"
+    CONNECTION_URL=$POSTGRESQL_CONNECTION_URL
+fi
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
+       usename as user,  \
+       datname as db, \
+       client_addr, \
+       application_name as app,\
+       state \
+from pg_stat_activity;"
+```
+
 ### Operate common SQL commands
 
 # I connected to postgresql with
