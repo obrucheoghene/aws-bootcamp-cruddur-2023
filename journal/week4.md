@@ -238,14 +238,81 @@ CREATE TABLE public.activities (
 );
 ```
 
+### Implement a postgres client for python using a connection pool
 
+First I added the postgress client to `requirement.txt`
+```py
+psycopg[binary]
+psycopg[pool]
+``` 
 
+I created `lib/db.py` create connection pool
+
+```py
+from psycopg_pool import ConnectionPool
+import os
+
+def query_wrap_object(template):
+  sql = f"""
+  (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+  {template}
+  ) object_row);
+  """
+  return sql
+
+def query_wrap_array(template):
+  sql = f"""
+  (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+  {template}
+  ) array_row);
+  """
+  return sql
+
+connection_url = os.getenv("POSTGRESQL_CONNECTION_URL")
+connection_url = "postgresql://postgres:password@db:5432/cruddur"
+pool = ConnectionPool(connection_url)
+```
+
+Finally I updated `home_activities.py` to query and return data from the database
+
+```py
+class HomeActivities:
+  def run(cognito_user_id=None):
+    #logger.info("HomeActivities")
+    sql = query_wrap_array("""
+      SELECT
+        activities.uuid,
+        users.display_name,
+        users.handle,
+        activities.message,
+        activities.replies_count,
+        activities.reposts_count,
+        activities.likes_count,
+        activities.reply_to_activity_uuid,
+        activities.expires_at,
+        activities.created_at
+      FROM public.activities
+      LEFT JOIN public.users ON users.uuid = activities.user_uuid
+      ORDER BY activities.created_at DESC
+    """)
+
+    with pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(sql)
+        # this will return a tuple
+        # the first field being the data
+        json = cur.fetchone()
+    return json[0]
+```
+
+Here is the return on the website
+
+![PSQL Data in Cruddur](./assets/psql-cruddur-query-seed-data.png)
 
 
 
     Remotely connect to RDS instance
     Programmatically update a security group rule
-    Implement a postgres client for python using a connection pool
     Troubleshoot common SQL errors
     Implement a Lambda that runs in a VPC and commits code to RDS
     Work with PSQL json functions to directly return json from the database
