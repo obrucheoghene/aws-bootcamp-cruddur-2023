@@ -310,8 +310,10 @@ Here is the return on the website
 ![PSQL Data in Cruddur](./assets/psql-cruddur-query-seed-data.png)
 
 
+ ### Remotely connect to RDS instance
+ To connect to my RDS 
 
-    Remotely connect to RDS instance
+
     Programmatically update a security group rule
     Troubleshoot common SQL errors
     Implement a Lambda that runs in a VPC and commits code to RDS
