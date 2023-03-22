@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="UPDATE RDS SECURITY GROUP RULES"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+aws ec2 modify-security-group-rules \
+ --group-id $DB_SECURITY_GROUP_ID \
+ --security-group-rules "SecurityGroupRuleId=$DB_SECURITY_GROUP_RULE_ID,SecurityGroupRule={Description=CODESPACE, IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$CODESPACE_IP/32}"
