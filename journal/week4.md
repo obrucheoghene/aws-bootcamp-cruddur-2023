@@ -309,12 +309,35 @@ Here is the return on the website
 
 ![PSQL Data in Cruddur](./assets/psql-cruddur-query-seed-data.png)
 
+### Remotely connect to RDS instance
+To connect to my RDS postgresql instance, I did following
+- I started the instance
+- Added a new inbound security group to it to allow my Codespace IP address
+- I connected to the instance using `psql` command and the connection url.
 
- ### Remotely connect to RDS instance
- To connect to my RDS 
+RDS Security Group Rule
+![RDS Security Group Rule](./assets/rds-security-rules.png)
 
+RDS Instance Connection
+![RDS Instance Connection](./assets/rds-instance-connection.png)
 
-    Programmatically update a security group rule
+Programmatically update a security group rule
+I created the bash script below in `backend-flask\bin\rds-security-rule` to programmatically update my security group rules
+
+```sh
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="UPDATE RDS SECURITY GROUP RULES"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+aws ec2 modify-security-group-rules \
+ --group-id $DB_SECURITY_GROUP_ID \
+ --security-group-rules "SecurityGroupRuleId=$DB_SECURITY_GROUP_RULE_ID,SecurityGroupRule={Description=CODESPACE, IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$CODESPACE_IP/32}"
+```
     Troubleshoot common SQL errors
     Implement a Lambda that runs in a VPC and commits code to RDS
     Work with PSQL json functions to directly return json from the database
