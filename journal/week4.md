@@ -338,6 +338,9 @@ aws ec2 modify-security-group-rules \
  --group-id $DB_SECURITY_GROUP_ID \
  --security-group-rules "SecurityGroupRuleId=$DB_SECURITY_GROUP_RULE_ID,SecurityGroupRule={Description=CODESPACE, IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$CODESPACE_IP/32}"
 ```
+
+lambda layer refer
+
     Troubleshoot common SQL errors
     Implement a Lambda that runs in a VPC and commits code to RDS
     Work with PSQL json functions to directly return json from the database
