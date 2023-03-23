@@ -339,9 +339,87 @@ aws ec2 modify-security-group-rules \
  --security-group-rules "SecurityGroupRuleId=$DB_SECURITY_GROUP_RULE_ID,SecurityGroupRule={Description=CODESPACE, IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$CODESPACE_IP/32}"
 ```
 
-lambda layer refer
+### Troubleshoot common SQL errors
+I troubleshot commons SQL errors and fixed it 
 
-    Troubleshoot common SQL errors
-    Implement a Lambda that runs in a VPC and commits code to RDS
-    Work with PSQL json functions to directly return json from the database
-    Correctly sanitize parameters passed to SQL to execute
+
+### Implement a Lambda that runs in a VPC and commits code to RDS
+I successfully implemented the Lambda function following these step.
+
+- First in `aws/lambda/cruddur-post-confirrmation.py` I created the python script below for the lambda function
+```py
+import json
+import psycopg2
+import os
+
+def lambda_handler(event, context):
+    user = event['request']['userAttributes']
+
+    user_display_name  = user['name']
+    user_email         = user['email']
+    user_handle        = user['preferred_username']
+    user_cognito_id    = user['sub']
+    try:
+      sql = f"""
+         INSERT INTO public.users (
+          display_name, 
+          email,
+          handle, 
+          cognito_user_id
+          ) 
+        VALUES(
+          '{user_display_name}', 
+          '{user_email}', 
+          '{user_handle}', 
+          '{user_cognito_id}'
+        )
+      """
+      conn = psycopg2.connect(os.getenv('POSTGRESQL_PROD_CONNECTION_URL'))
+      cur = conn.cursor()
+      cur.execute(sql)
+      conn.commit() 
+
+    except (Exception, psycopg2.DatabaseError) as error:
+      print(error)
+    finally:
+      if conn is not None:
+          cur.close()
+          conn.close()
+    return event
+```
+
+- On my AWS console, I create a lambda function with the following properties
+  - Function name: **cruddur-post-confirmation**
+  - Runtime: **Python 3.8**
+  - Architecture: x86_64
+
+- On the lamdba function code source and paste the python snippet on `aws/lambda/cruddur-post-confirrmation.py` as show above
+
+![lambda function](./assets/post-confirmation-lambda-function.png)
+
+- I added the `psycopg2-lambda-layer` for my region `us-east-1` for `Python 3.8`
+
+`arn:aws:lambda:us-east-1:898466741470:layer:psycopg2-py38:2`
+
+- I added `POSTGRESQL_PROD_CONNECTION_URL` to the environment variable
+
+- I added `cruddur-post-confirmation` lambda function to `cruddur-user-pool`  lambda trigger user pool properties so that cognito will trigger it
+
+![lambda function](./assets/cognito-user-pool-lambda-trigger.png)
+
+- Then I edited the `cruddur-post-confirmation` lambda `VCP` and added it to `RDS` instance `security group`
+
+- I I wrote a test for the function, confirm it work then I deployed it.
+
+![lambda function](./assets/post-confirmation-lambda-text-restult.png)
+
+Here is the result showing my lambda test and cruddur signup.
+
+![lambda function](./assets/post-confirmation-lambda-text-restult.png)
+
+![lambda function](./assets/lambda-function-data.png)
+
+
+
+Work with PSQL json functions to directly return json from the database
+Correctly sanitize parameters passed to SQL to execute
