@@ -464,3 +464,4 @@ VALUES (
 
 At the end of week 4, Crud was working 
 
+![Cruddur working](./assets/cruddur-crud-working.png)
