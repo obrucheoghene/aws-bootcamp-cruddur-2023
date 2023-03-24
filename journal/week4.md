@@ -420,6 +420,47 @@ Here is the result showing my lambda test and cruddur signup.
 ![lambda function](./assets/lambda-function-data.png)
 
 
+Work with PSQL json functions to directly return json from the database 
 
-Work with PSQL json functions to directly return json from the database
-Correctly sanitize parameters passed to SQL to execute
+```py
+
+  def query_wrap_object(self,template):
+    sql = f"""
+    (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
+    {template}
+    ) object_row);
+    """
+    return sql
+  def query_wrap_array(self,template):
+    sql = f"""
+    (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
+    {template}
+    ) array_row);
+    """
+
+```
+
+
+Correctly sanitize parameters passed to SQL to execute 
+
+I used parameterized queries, which can help prevent SQL injection attacks.
+here is an example.
+```py
+INSERT INTO public.activities (
+  user_uuid,
+  message,
+  expires_at
+)
+VALUES (
+  (SELECT uuid 
+    FROM public.users 
+    WHERE users.handle = %(handle)s
+    LIMIT 1
+  ),
+  %(message)s,
+  %(expires_at)s
+) RETURNING uuid;
+```
+
+At the end of week 4, Crud was working 
+
