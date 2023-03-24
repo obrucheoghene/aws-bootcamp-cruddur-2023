@@ -9,7 +9,7 @@ class Db:
     self.init_pool()
 
   def init_pool(self):
-    connection_url = os.getenv("CONNECTION_URL")
+    connection_url = os.getenv("POSTGRESQL_PROD_CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
 
 
@@ -82,7 +82,7 @@ class Db:
 
         if json is None:
           return "{}"
-        else
+        else:
           return json[0]
 
   def query_wrap_object(self,template):
