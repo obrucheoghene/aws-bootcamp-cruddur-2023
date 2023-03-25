@@ -1,0 +1,18 @@
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="DROP CRUDDUR DATABASE"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+if [ "$1" = "prod" ]; then
+    echo "RUNNING IN PRODUCTION"
+    CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
+else
+    echo "RUNNING IN DEVELOPMENT"
+    CONNECTION_URL=$POSTGRESQL_CONNECTION_URL
+fi
+DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<< "$CONNECTION_URL")
+psql $DB_CONNECTION_URL -c "DROP DATABASE cruddur;"
