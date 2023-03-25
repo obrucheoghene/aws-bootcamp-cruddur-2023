@@ -10,7 +10,7 @@ printf "${CYAN}${LABEL}${NO_COLOR}\n"
 
 BIN_PATH=$(realpath .)/bin
 
-source "$BIN_PATH/db-drop"
-source "$BIN_PATH/db-create"
-source "$BIN_PATH/db-schema-load"
-source "$BIN_PATH/db-seed"
+source "$BIN_PATH/db/drop"
+source "$BIN_PATH/db/create"
+source "$BIN_PATH/db/schema-load"
+source "$BIN_PATH/db/seed"
