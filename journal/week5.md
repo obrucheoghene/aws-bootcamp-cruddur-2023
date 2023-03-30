@@ -64,8 +64,7 @@ response = ddb.create_table(
 print(response) 
 ```
 
-![Schema load](./assets/ddb-schema-load.png)
-
+![Schema load](./assets/create-ddb-table.png)
 
 
 ###   Implementing DynamoDB query using Single Table Design
@@ -78,15 +77,38 @@ aws dynamodb list-tables --endpoint-url=http://localhost:8000 \
 --query TableNames \
 --output table
 ```
+![Dynamodb](./assets/list-ddb-tables.png)
+
 
 - Drop table using the aws cli
 ```sh
 aws dynamodb delete-table --endpoint-url=http://localhost:8000 \
     --table-name cruddur-messages
 ```
+![Dynamodb](./assets/delete-ddb-table.png)
 
-- I scan thte table
 
+- I scanned table using boto3 sdk
+
+```py
+#!/usr/bin/env python3
+
+import boto3
+
+attrs = {
+  'endpoint_url': 'http://localhost:8000'
+}
+ddb = boto3.resource('dynamodb',**attrs)
+table_name = 'cruddur-messages'
+
+table = ddb.Table(table_name)
+response = table.scan()
+
+items = response['Items']
+for item in items:
+  print(item)
+```
+![Dynamodb](./assets/dynamodb-scantable.png)
 
 
   
