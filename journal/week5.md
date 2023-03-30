@@ -1,10 +1,15 @@
 # Week 5 — DynamoDB and Serverless Caching
 
+## Required Home Work
+
+  Data Modelling a Direct Messaging System using Single Table Design
 Dynamodb Schema load CLI response
 ![Schema load](./assets/ddb-schema-load.png)
 
-I create dynamo Schema for `cruddur-messages` table and loaded it to the dynamodb using `boto3` client
-Using boto3 client, i created `cruddur-messages` in my dynamodb
+
+### Provisioning DynamoDB tables with Provisioned Capacity
+
+Using boto3 client, I created `cruddur-messages` in dynamodb with provisioned capacity
 
 ```py
 #!/usr/bin/env python3
@@ -60,3 +65,31 @@ print(response)
 ```
 
 ![Schema load](./assets/ddb-schema-load.png)
+
+
+
+###   Implementing DynamoDB query using Single Table Design
+
+I implemented the follow dynamodb query
+
+- List Tables using the aws cli
+```sh
+aws dynamodb list-tables --endpoint-url=http://localhost:8000 \
+--query TableNames \
+--output table
+```
+
+- Drop table using the aws cli
+```sh
+aws dynamodb delete-table --endpoint-url=http://localhost:8000 \
+    --table-name cruddur-messages
+```
+
+- I scan thte table
+
+
+
+  
+    Utilizing a Global Secondary Index (GSI) with DynamoDB
+    Rapid data modelling and implementation of DynamoDB with DynamoDB Local
+    Writing utility scripts to easily setup and teardown and debug DynamoDB data
