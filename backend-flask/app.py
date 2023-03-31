@@ -173,10 +173,13 @@ def data_create_message():
   user_receiver_handle = request.json.get('handle',None)
   message = request.json['message']
 
+
   access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
+    print("MESSAGES ====== MESSAGE", message, "RECEIEV", user_receiver_handle)
+
     app.logger.debug("authenicated")
     app.logger.debug(claims)
     cognito_user_id = claims['sub']
@@ -222,9 +225,6 @@ def data_home():
     app.logger.debug(e)
     app.logger.debug("unauthenicated")
   data = HomeActivities.run()
-  print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-  print(data)
-  print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
   return data, 200
 
