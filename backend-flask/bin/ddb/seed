@@ -34,10 +34,10 @@ def get_user_uuids():
         )
   """
   users = db.query_array_json(sql,{
-    'my_handle':  'andrewbrown',
+    'my_handle':  'wilfred',
     'other_handle': 'bayko'
   })
-  my_user    = next((item for item in users if item["handle"] == 'andrewbrown'), None)
+  my_user    = next((item for item in users if item["handle"] == 'wilfred'), None)
   other_user = next((item for item in users if item["handle"] == 'bayko'), None)
   results = {
     'my_user': my_user,
@@ -88,6 +88,8 @@ message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
 now = datetime.now(timezone.utc).astimezone()
 users = get_user_uuids()
 
+
+
 create_message_group(
   client=ddb,
   message_group_uuid=message_group_uuid,
@@ -96,7 +98,7 @@ create_message_group(
   other_user_handle=users['other_user']['handle'],
   other_user_display_name=users['other_user']['display_name'],
   last_message_at=now.isoformat(),
-  message="this is a filler message"
+  message="This is a filler for  message group 1"
 )
 
 create_message_group(
@@ -107,7 +109,7 @@ create_message_group(
   other_user_handle=users['my_user']['handle'],
   other_user_display_name=users['my_user']['display_name'],
   last_message_at=now.isoformat(),
-  message="this is a filler message"
+  message="This is a filler for  message group 2"
 )
 
 conversation = """
