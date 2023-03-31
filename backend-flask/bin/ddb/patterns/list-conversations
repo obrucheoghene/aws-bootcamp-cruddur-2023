@@ -30,14 +30,14 @@ def get_my_user_uuid():
       users.handle =%(handle)s
   """
   uuid = db.query_value(sql,{
-    'handle':  'andrewbrown'
+    'handle':  'wilfred'
   })
   return uuid
 
 my_user_uuid = get_my_user_uuid()
 print(f"my-uuid: {my_user_uuid}")
 
-year = str(datetime.now().year)
+year = str(datetime.datetime.now().year)
 
 # define the query parameters
 query_params = {
