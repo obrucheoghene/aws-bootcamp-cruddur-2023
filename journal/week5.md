@@ -152,6 +152,13 @@ Show newly created conversation
 
 
 
+## Implement Dynamodb Stream
+I created a dynamodb table and turned on DynamoDB stream.
+
+
+Created a Dynamodb trigger to call to invoke an AWS Lambda function every time an item is changed, and  DynamoDB stream is updated.
+
+
   
-    Utilizing a Global Secondary Index (GSI) with DynamoDB
+Utilizing a Global Secondary Index (GSI) with DynamoDB
     Rapid data modelling and implementation of DynamoDB with DynamoDB Local
