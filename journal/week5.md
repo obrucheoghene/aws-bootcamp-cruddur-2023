@@ -111,7 +111,47 @@ for item in items:
 ![Dynamodb](./assets/dynamodb-scantable.png)
 
 
+###  Writing utility scripts to easily setup and teardown and debug DynamoDB data
+I wrote the following scrits to setup dynamodb
+
+- Create Dynamo DB table
+```sh
+#!/usr/bin/bash
+
+CYAN='\033[1;36m'
+NO_COLOR='\033[0m'
+
+LABEL="DATABASE SCHEMA LOAD"
+
+printf "${CYAN}${LABEL}${NO_COLOR}\n"
+
+SCHEMA_PATH=$(realpath .)/db/schema.sql
+
+if [ "$1" = "prod" ]; then
+    echo "RUNNING IN PRODUCTION"
+    CONNECTION_URL=$POSTGRESQL_PROD_CONNECTION_URL
+else
+    echo "RUNNING IN DEVELOPMENT"
+    CONNECTION_URL=$POSTGRESQL_CONNECTION_URL
+fi
+
+psql $CONNECTION_URL cruddur < $SCHEMA_PATH
+```
+
+- Seed the table with conversation data
+- Drop the table
+- List tables
+- Query the table to list conversations
+- Query the table to get conversation
+
+Show preloaded conversation
+![Dynamodb](./assets/list-conversation.png)
+
+Show newly created conversation
+![Dynamodb](./assets/new-converstion.png)
+
+
+
   
     Utilizing a Global Secondary Index (GSI) with DynamoDB
     Rapid data modelling and implementation of DynamoDB with DynamoDB Local
-    Writing utility scripts to easily setup and teardown and debug DynamoDB data
