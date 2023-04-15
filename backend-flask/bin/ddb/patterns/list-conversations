@@ -11,7 +11,7 @@ sys.path.append(parent_path)
 from lib.db import db
 
 attrs = {
-  'endpoint_url': 'http://localhost:8000'
+  'endpoint_url': 'http://dynamodb-local:8000'
 }
 
 if len(sys.argv) == 2:
