@@ -211,7 +211,12 @@ def lambda_handler(event, context):
       )
       print("CREATE ===>",response)
 ```
+Dynamodb trigger logs
+![Dynamodb](./assets/dynamodb-trigger-logs.png)
 
+
+Dynamodb working
+![Dynamodb](./assets/dbnamodb-stream-working.png)
 
   
 Utilizing a Global Secondary Index (GSI) with DynamoDB
