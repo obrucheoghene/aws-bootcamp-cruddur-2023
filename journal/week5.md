@@ -219,5 +219,4 @@ Dynamodb working
 ![Dynamodb](./assets/dbnamodb-stream-working.png)
 
   
-Utilizing a Global Secondary Index (GSI) with DynamoDB
-    Rapid data modelling and implementation of DynamoDB with DynamoDB Local
+
