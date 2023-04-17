@@ -25,4 +25,5 @@ npm install
 LABEL="INSTALL BACKEND FLASK REQUIREMENTS"
 printf "${CYAN}${LABEL}${NO_COLOR}\n"
 cd /workspaces/aws-bootcamp-cruddur-2023/backend-flask
+
 pip install -r requirements.txt
