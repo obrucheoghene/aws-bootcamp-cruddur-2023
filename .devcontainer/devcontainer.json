@@ -1,32 +1,32 @@
 {
-	"image": "mcr.microsoft.com/devcontainers/universal:2",
-	"features": {
-		"ghcr.io/devcontainers/features/aws-cli:1": {}
-	},
-	"remoteEnv": {
-		"AWS_CLI_AUTO_PROMPT": "on-partial"
-	},
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {}
+  },
+  "remoteEnv": {
+    "AWS_CLI_AUTO_PROMPT": "on-partial"
+  },
 
-	"postCreateCommand": "./start-up-script",
+  "postCreateCommand": "./.devcontainer/postCreateCommand",
 
-	"forwardPorts": [3000, 4567],
-	"portsAttributes": {
-		"3000": {
-			"visibility": "public"
-		},
-		"4567": {
-			"visibility": "public"	
-		}
-	},
+  "forwardPorts": [3000, 4567],
+  "portsAttributes": {
+    "3000": {
+      "visibility": "public"
+    },
+    "4567": {
+      "visibility": "public"
+    }
+  },
 
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-azuretools.vscode-docker",
-				"42Crunch.vscode-openapi",
-				"cweijan.vscode-postgresql-client2",
-				"ms-python.python"
-			]
-		}
-	}
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "42Crunch.vscode-openapi",
+        "cweijan.vscode-postgresql-client2",
+        "ms-python.python"
+      ]
+    }
+  }
 }
