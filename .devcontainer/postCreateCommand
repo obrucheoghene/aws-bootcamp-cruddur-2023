@@ -13,7 +13,7 @@ sudo apt update
 sudo apt install -y postgresql-client-13 libpq-dev
 
 # UPDATE RDS SECURITY RULES
-source backend-flask/bin/rds-update-sg-rule
+source /workspaces/aws-bootcamp-cruddur-2023/backend-flask/bin/rds-update-sg-rule
 
 # INSTALL FRONTEND REACT DEPENDENCIES
 LABEL="INSTALL FRONTEND REACT DEPENDENCIES"
