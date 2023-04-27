@@ -8,4 +8,4 @@
       ],
       "Resource": "arn:aws:ssm:ca-central-1:387543059434:parameter/cruddur/backend-flask/*"
     }]
-  }
+}
