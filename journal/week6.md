@@ -122,8 +122,120 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/CONNE
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" --value $ROLLBAR_ACCESS_TOKEN
 aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" --value "x-honeycomb-team=$HONEYCOMB_API_KEY"
 ```
+**Task Definition JSON Files**
+- `backend-flask` Task Definition
+```json
+{
+  "family": "backend-flask",
+  "executionRoleArn": "arn:aws:iam::860027186733:role/CruddurServiceExecutionRole",
+  "taskRoleArn": "arn:aws:iam::860027186733:role/CruddurTaskRole",
+  "networkMode": "awsvpc",
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": [ 
+    "FARGATE" 
+  ],
+  "containerDefinitions": [
+    {
+      "name": "backend-flask",
+      "image": "860027186733.dkr.ecr.us-east-1.amazonaws.com/backend-flask",
+      "essential": true,
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "python /backend-flask/bin/flask/health-check"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "portMappings": [
+        {
+          "name": "backend-flask",
+          "containerPort": 4567,
+          "protocol": "tcp", 
+          "appProtocol": "http"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "cruddur",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "backend-flask"
+        }
+      },
+      "environment": [
+        {"name": "OTEL_SERVICE_NAME", "value": "backend-flask"},
+        {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
+        {"name": "AWS_COGNITO_USER_POOL_ID", "value": "us-east-1_RF93UwMKk"},
+        {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "35tni6c9nivok3l798707lmhtb"},
+        {"name": "FRONTEND_URL", "value": "*"},
+        {"name": "BACKEND_URL", "value": "*"},
+        {"name": "AWS_DEFAULT_REGION", "value": "us-east-1"}
+      ],
+      "secrets": [
+        {"name": "AWS_ACCESS_KEY_ID"    , "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/AWS_ACCESS_KEY_ID"},
+        {"name": "AWS_SECRET_ACCESS_KEY", "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/AWS_SECRET_ACCESS_KEY"},
+        {"name": "CONNECTION_URL"       , "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/CONNECTION_URL" },
+        {"name": "POSTGRESQL_PROD_CONNECTION_URL"       , "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/CONNECTION_URL" },
+        {"name": "ROLLBAR_ACCESS_TOKEN" , "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/ROLLBAR_ACCESS_TOKEN" },
+        {"name": "OTEL_EXPORTER_OTLP_HEADERS" , "valueFrom": "arn:aws:ssm:us-east-1:860027186733:parameter/cruddur/backend-flask/OTEL_EXPORTER_OTLP_HEADERS" }
+      ]
+    }
+  ]
+}
+```
 
-Here is my JSON file for 
+- `frontend-react-js` Task Definition
+```json
+{
+    "family": "frontend-react-js",
+    "executionRoleArn": "arn:aws:iam::860027186733:role/CruddurServiceExecutionRole",
+    "taskRoleArn": "arn:aws:iam::860027186733:role/CruddurTaskRole",
+    "networkMode": "awsvpc",
+    "cpu": "256",
+    "memory": "512",
+    "requiresCompatibilities": [ 
+      "FARGATE" 
+    ],
+    "containerDefinitions": [
+      {
+        "name": "frontend-react-js",
+        "image": "860027186733.dkr.ecr.us-east-1.amazonaws.com/frontend-react-js",
+        "essential": true,
+        "healthCheck": {
+          "command": [
+            "CMD-SHELL",
+            "curl -f http://localhost:3000 || exit 1"
+          ],
+          "interval": 30,
+          "timeout": 5,
+          "retries": 3
+        },
+        "portMappings": [
+          {
+            "name": "frontend-react-js",
+            "containerPort": 3000,
+            "protocol": "tcp", 
+            "appProtocol": "http"
+          }
+        ],
+  
+        "logConfiguration": {
+          "logDriver": "awslogs",
+          "options": {
+              "awslogs-group": "cruddur",
+              "awslogs-region": "us-east-1",
+              "awslogs-stream-prefix": "frontend-react-js"
+          }
+        }
+      }
+    ]
+  }
+```
+
 
 ### Route traffic to the frontend and backend on different subdomains using Application Load Balancer
 ### Securing our flask container
