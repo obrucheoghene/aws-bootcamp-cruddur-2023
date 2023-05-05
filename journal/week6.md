@@ -42,13 +42,40 @@ aws ecr create-repository \
   --image-tag-mutability MUTABLE
 ```
 
-
-
-
-I created an ECR (Elastic Container Registery) Reposittory
+Build docker images
 - backend-flask
+```sh
+docker build -t backend-flask .
+```
 - Frontend-react-js
-- cruddur-python
+```sh
+docker build \
+--build-arg REACT_APP_BACKEND_URL="http://cruddur-alb-1591977895.us-east-1.elb.amazonaws.com:4567" \
+--build-arg REACT_APP_AWS_PROJECT_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_COGNITO_REGION="$AWS_DEFAULT_REGION" \
+--build-arg REACT_APP_AWS_USER_POOLS_ID="$AWS_COGNITO_USER_POOL_ID" \
+--build-arg REACT_APP_CLIENT_ID="$AWS_COGNITO_USER_POOL_CLIENT_ID" \
+-t frontend-react-js \
+-f Dockerfile.prod \
+.
+```
+- Set ECR URL
+```sh
+export ECR_BACKEND_FLASK_URL="$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/backend-flask"
+echo $ECR_BACKEND_FLASK_URL
+```
+
+Tagged and pushed Images to ECR repo.
+- backend-flask
+```sh
+docker tag backend-flask:latest $ECR_BACKEND_FLASK_URL:latest
+docker push $ECR_BACKEND_FLASK_URL:latest
+```
+- Frontend-react-js
+```sh
+docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
+docker push $ECR_FRONTEND_REACT_URL:latest
+```
 
 ### Route traffic to the frontend and backend on different subdomains using Application Load Balancer
 ### Securing our flask container
