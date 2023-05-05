@@ -41,6 +41,7 @@ aws ecr create-repository \
   --repository-name cruddur-python \
   --image-tag-mutability MUTABLE
 ```
+![Cruddur ECR Repo](./assets/cruddur-ecr-repo.png)
 
 Build docker images
 - backend-flask
@@ -76,8 +77,8 @@ docker push $ECR_BACKEND_FLASK_URL:latest
 docker tag frontend-react-js:latest $ECR_FRONTEND_REACT_URL:latest
 docker push $ECR_FRONTEND_REACT_URL:latest
 ```
-#### Register Task Defintions
-To register task definition for backend-flask and frontend-react-js
+#### Create Task Defintions
+To Create task definition for backend-flask and frontend-react-js
 - I created `CruddurServiceExecutionRole` and added `CruddurServiceExecutionPolicy`
 
 ```json
@@ -236,8 +237,145 @@ aws ssm put-parameter --type "SecureString" --name "/cruddur/backend-flask/OTEL_
   }
 ```
 
+#### Register Task Defintions
+- Backend-flask
+```sh
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/backend-flask.json
+```
+- Frontend-react-js
+```sh
+aws ecs register-task-definition --cli-input-json file://aws/task-definitions/frontend-react-js.json
+```
+![Cruddur Load Balancer](./assets/cruddur-task-definition.png)
+
 
 ### Route traffic to the frontend and backend on different subdomains using Application Load Balancer
+
+#### Create A Load Balancer
+I created a Load balancer named `cruddur-lb` to listen to port `3000` and port `4567`
+
+![Cruddur Load Balancer](./assets/cruddur-load-balancer.png)
+
+
+#### Created Services
+
+- `backend-flask` service 
+Ran the following command on the aws cli to create the backend service
+```sh
+aws ecs create-service --cli-input-json file://aws/json/service-backend-flask.json
+```
+Here is the content of `file://aws/json/service-backend-flask.json`
+```json
+{
+    "cluster": "cruddur",
+    "launchType": "FARGATE",
+    "desiredCount": 1,
+    "enableECSManagedTags": true,
+    "enableExecuteCommand": true,
+    "loadBalancers": [
+      {
+          "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:860027186733:targetgroup/cruddur-backend-flask-tg/0cfe3efa0bc9d150",
+          "containerName": "backend-flask",
+          "containerPort": 4567
+      }
+    ],
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "assignPublicIp": "ENABLED",
+        "securityGroups": [
+          "sg-036b68b04d2889fa6"
+        ],
+        "subnets": [
+            "subnet-0b087c85b44815ab8",
+            "subnet-0985ebd762a0276a7",
+            "subnet-084b53ce45e3c7124"
+        ]
+      }
+    },
+    "serviceConnectConfiguration": {
+      "enabled": true,
+      "namespace": "cruddur",
+      "services": [
+        {
+          "portName": "backend-flask",
+          "discoveryName": "backend-flaskd",
+          "clientAliases": [{"port": 4567}]
+        }
+      ]
+    },
+    "propagateTags": "SERVICE",
+    "serviceName": "backend-flask",
+    "taskDefinition": "backend-flask"
+  }
+```
+
+
+-  `frontend-react-js` service
+Ran the command below on the aws cli to create the rontend-react-js service
+```sh
+aws ecs create-service --cli-input-json file://aws/json/service-frontend-react-js.json
+```
+Here is the content of `file://aws/json/service-frontend-react-js.json`
+```json
+{
+    "cluster": "cruddur",
+    "launchType": "FARGATE",
+    "desiredCount": 1,
+    "enableECSManagedTags": true,
+    "enableExecuteCommand": true,
+    "loadBalancers": [
+      {
+        "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:860027186733:targetgroup/cruddur-frontend-react-js/4c2a6b805b108ef0",
+        "containerName": "frontend-react-js",
+        "containerPort": 3000
+      }
+    ],
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "assignPublicIp": "ENABLED",
+        "securityGroups": [
+            "sg-036b68b04d2889fa6"
+          ],
+        "subnets": [
+            "subnet-0b087c85b44815ab8",
+            "subnet-0985ebd762a0276a7",
+            "subnet-084b53ce45e3c7124"
+        ]
+      }
+    },
+    "propagateTags": "SERVICE",
+    "serviceName": "frontend-react-js",
+    "taskDefinition": "frontend-react-js",
+    "serviceConnectConfiguration": {
+      "enabled": true,
+      "namespace": "cruddur",
+      "services": [
+        {
+          "portName": "frontend-react-js",
+          "discoveryName": "frontend-react-js",
+          "clientAliases": [{"port": 3000}]
+        }
+      ]
+    }
+  }
+```
+![Cruddur cluster services](./assets/cruddur-running-services.png)
+
+
+
+I created two target groups to tell the load balancer `cruddur-lb` to direct traffic to `backend-flask` and `frontend-react-js`
+
+![Cruddur cluster services](./assets/cruddur-target-groups.png)
+
+
+Here are my running tasks 
+![Cruddur cluster services](./assets/cruddur-running-task.png)
+
+Here is my cruddur cluster showing running task
+![Cruddur cluster services](./assets/cruddur-running-cluster.png)
+
+
+
 ### Securing our flask container
 
 
@@ -266,5 +404,62 @@ finally:
   conn.close()
  ```
 
+#### Health Check
+```sh
+#!/usr/bin/env python3
+
+import urllib.request
+
+try:
+  response = urllib.request.urlopen('http://localhost:4567/api/health-check')
+  if response.getcode() == 200:
+    print("[OK] Flask server is running")
+    exit(0) # success
+  else:
+    print("[BAD] Flask server is not running")
+    exit(1) # false
+# This for some reason is not capturing the error....
+#except ConnectionRefusedError as e:
+# so we'll just catch on all even though this is a bad practice
+except Exception as e:
+  print(e)
+  exit(1) # false
+```
+![Cruddur Backend health Check](./assets/backend-health-check.png)
+
+
+#### Connect to ECS Container
+```sh
+#! /usr/bin/bash
+if [ -z "$1" ]; then
+  echo "No TASK_ID argument supplied eg ./bin/ecs/connect-to-service 99b2f8953616495e99545e5a6066fbb5d backend-flask"
+  exit 1
+fi
+TASK_ID=$1
+
+if [ -z "$2" ]; then
+  echo "No CONTAINER_NAME argument supplied eg ./bin/ecs/connect-to-service 99b2f8953616495e99545e5a6066fbb5d backend-flask"
+  exit 1
+fi
+CONTAINER_NAME=$2
+
+echo "TASK ID : $TASK_ID"
+echo "Container Name: $CONTAINER_NAME"
+
+aws ecs execute-command  \
+--region $AWS_DEFAULT_REGION \
+--cluster cruddur \
+--task $TASK_ID \
+--container $CONTAINER_NAME \
+--command "/bin/sh" \
+--interactive
+```
+
+#### Login to ECR
+```sh
+#!/usr/bin/env bash
+# Login to EWS ECR
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin "860027186733.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com"
+```
 
 
